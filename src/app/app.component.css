@@ -1,0 +1,22 @@
+span {
+  padding-right: 1rem;
+  text-decoration: none;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.content {
+
+}
+
+.content span {
+  justify-content: space-between;
+}
+
+.mat-toolbar {
+  position: relative;
+  background-color: #333333;
+}
