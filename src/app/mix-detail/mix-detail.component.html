@@ -1,0 +1,43 @@
+
+<div class="container">
+  <div class="row">
+    <h2 class="col-lg">{{mix.mix_name}} details</h2>
+  </div>
+  <div class="row">
+    <div class="col-lg">
+      <button mat-raised-button class="float-right custom" color="primary" (click)="openDialog()">Add flavour</button>
+    </div>
+  </div>
+  <div class="row ">
+    <div class="col-lg">
+      <mat-card class="add-card mat-elevation-z8">
+        <mat-card-content>
+          <form>
+        <mat-form-field>
+          <mat-label>Mix name</mat-label>
+          <input matInput placeholder="name" [(ngModel)]="mix.mix_name" [name]="mix.mix_name">
+        </mat-form-field><br>
+        <mat-label>Rating </mat-label>
+        <ngb-rating [(rate)]="mix.rating" [readonly]="false" max="5"></ngb-rating><br>
+        <mat-label>Strength </mat-label>
+        <ngb-rating [(rate)]="mix.strength" max="10"></ngb-rating>
+      </form>
+            <div *ngIf="mix.compound.length > 0; else elseBlock">
+              <mat-list-item >
+                <mat-chip-list >
+                  <mat-chip *ngFor="let compound of mix.compound">{{compound.flavour.flavour_name}} - {{compound.percentage}}%
+                    <button class="btn" (click)="remove(compound.id)"><mat-icon >cancel</mat-icon></button>
+                  </mat-chip>
+                </mat-chip-list>
+              </mat-list-item>
+            </div>
+            <ng-template #elseBlock>No flavours..</ng-template>
+    </mat-card-content>
+        <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="save()">Save</button>
+      <button mat-raised-button (click)="goBack()">Back</button>
+    </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
