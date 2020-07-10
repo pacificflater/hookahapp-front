@@ -1,0 +1,17 @@
+.container {
+  margin: 2em auto;
+  text-align: center;
+  min-width: 600px;
+}
+
+.add-full-width {
+  width: 100%;
+}
+
+form {
+  justify-content: center;
+}
+
+mat-slider {
+  width: 200px;
+}

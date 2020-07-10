@@ -1,0 +1,18 @@
+<div class="container">
+  <h2>Add new mix</h2>
+  <form>
+        <mat-form-field>
+          <mat-label>Mix name</mat-label>
+          <input matInput placeholder="Enter name" #mixName>
+        </mat-form-field>
+    <br>
+          <mat-label>Strength</mat-label>
+          <ngb-rating [(rate)]="strength" max="10"></ngb-rating>
+    <br>
+          <mat-label>Rating</mat-label>
+          <ngb-rating [(rate)]="rating" max="5" ></ngb-rating>
+    <br>
+      </form>
+  <button mat-raised-button color="primary" (click)="addMix(mixName.value,rating, strength ); mixName.value=''" [mat-dialog-close]="mixName.value">Add</button>
+</div>
+
