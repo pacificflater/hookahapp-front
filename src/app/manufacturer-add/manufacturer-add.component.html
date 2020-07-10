@@ -1,0 +1,12 @@
+
+<div class="container">
+  <h2>Add new manufacturer</h2>
+  <form>
+        <mat-form-field>
+          <mat-label>Manufacturer name</mat-label>
+          <input matInput placeholder="Enter name" #manufacturerName>
+        </mat-form-field>
+      </form>
+  <button mat-raised-button color="primary" (click)="addManufacturer(manufacturerName.value); manufacturerName.value=''" [mat-dialog-close]="manufacturerName.value">Add</button>
+</div>
+
