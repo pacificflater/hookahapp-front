@@ -1,0 +1,16 @@
+<form>
+  <mat-form-field>
+    <mat-label>Flavour name</mat-label>
+          <mat-select [(ngModel)]="selectedFlavour" name="flavour">
+            <mat-option *ngFor="let flavour of flavours" [value]="flavour.id">{{flavour.manufacturer.name}}: {{flavour.flavour_name}}</mat-option>
+          </mat-select>
+  </mat-form-field><br>
+
+    <mat-label>Persentage</mat-label>
+    <mat-slider thumbLabel step="1" min="0" max="100" #percentage></mat-slider><br>
+  <button mat-raised-button color="primary" (click)="addCompound(selectedFlavour, percentage.value);" mat-dialog-close>Add</button>
+</form>
+
+
+
+
