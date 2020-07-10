@@ -1,0 +1,18 @@
+<!--<body>-->
+  <!--<p>Вы уверены, что хотите выйти?</p>-->
+  <!--<button class="button button-primary"-->
+                <!--(click)="logout()">Да</button>-->
+  <!--<button class="button button-primary" routerLink="/">Нет</button>-->
+<!--</body>-->
+
+<div class="logout">
+  <mat-card>
+    <mat-card-header>Log out</mat-card-header>
+    <mat-card-content>Вы уверены, что хотите выйти?</mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="logout()">Да</button>
+      <button mat-raised-button routerLink="/">Нет</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
