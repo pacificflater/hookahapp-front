@@ -22,7 +22,7 @@ import { MixesComponent } from './mixes/mixes.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort'
-import {MatFormFieldModule} from "@angular/material/form-field";
+import { MatFormFieldModule} from "@angular/material/form-field";
 import { ManufacturerAddComponent } from './manufacturer-add/manufacturer-add.component';
 import { FlavourAddComponent } from './flavour-add/flavour-add.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -30,20 +30,22 @@ import { ManufacturerSearchComponent } from './manufacturer-search/manufacturer-
 import { SortableDirective } from './sortable.directive';
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule} from "@angular/material/button";
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatTabsModule} from "@angular/material/tabs";
-import {MatCardModule} from "@angular/material/card";
-import {MatInputModule} from "@angular/material/input";
-import {MatExpansionModule} from "@angular/material/expansion";
-import {MatListModule} from "@angular/material/list";
+import { MatToolbarModule} from "@angular/material/toolbar";
+import { MatTabsModule} from "@angular/material/tabs";
+import { MatCardModule} from "@angular/material/card";
+import { MatInputModule} from "@angular/material/input";
+import { MatExpansionModule} from "@angular/material/expansion";
+import { MatListModule} from "@angular/material/list";
 import { MatDialogModule} from "@angular/material/dialog";
-import {MatCheckboxModule} from "@angular/material/checkbox";
-import {MatOptionModule} from "@angular/material/core";
-import {MatSelectModule} from "@angular/material/select";
-import {MatBadgeModule} from "@angular/material/badge";
+import { MatCheckboxModule} from "@angular/material/checkbox";
+import { MatOptionModule} from "@angular/material/core";
+import { MatSelectModule} from "@angular/material/select";
+import { MatBadgeModule} from "@angular/material/badge";
 import { MixDetailComponent } from './mix-detail/mix-detail.component';
 import { MixAddComponent } from './mix-add/mix-add.component';
-import {MatChipsModule} from "@angular/material/chips";
+import { MatChipsModule} from "@angular/material/chips";
+import { CompoundComponent } from './compound/compound.component';
+import {MatTreeModule} from "@angular/material/tree";
 
 @NgModule({
   declarations: [
@@ -63,6 +65,7 @@ import {MatChipsModule} from "@angular/material/chips";
     SortableDirective,
     MixDetailComponent,
     MixAddComponent,
+    CompoundComponent,
   ],
 
   imports: [
@@ -91,7 +94,10 @@ import {MatChipsModule} from "@angular/material/chips";
     MatOptionModule,
     MatSelectModule,
     MatBadgeModule,
-    MatChipsModule
+    MatChipsModule,
+    MatSliderModule,
+    MatTreeModule
+
   ],
 
   providers: [

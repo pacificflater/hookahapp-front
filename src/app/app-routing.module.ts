@@ -12,21 +12,25 @@ import {MixesComponent} from "./mixes/mixes.component";
 import {ManufacturerAddComponent} from "./manufacturer-add/manufacturer-add.component";
 import { FlavourAddComponent } from "./flavour-add/flavour-add.component";
 import {MixDetailComponent} from "./mix-detail/mix-detail.component";
+import {MixAddComponent} from "./mix-add/mix-add.component";
+import {CompoundComponent} from "./compound/compound.component";
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full', canActivate: [AuthGuard] },
-  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
-  {path: 'manufacturers', component: ManufacturersComponent, canActivate: [AuthGuard]},
-  {path: 'flavours', component: FlavoursComponent, canActivate: [AuthGuard]},
-  {path: 'login', component: LoginComponent},
-  {path: 'logout', component: LogoutComponent, canActivate: [AuthGuard]},
-  {path: 'manufacturers/detail/:id', component: ManufacturerDetailComponent, canActivate: [AuthGuard]},
-  {path: 'flavours/detail/:id', component: FlavourDetailComponent, canActivate: [AuthGuard]},
-  {path: 'mix/detail/:id', component: MixDetailComponent, canActivate: [AuthGuard]},
-  {path: 'mix', component:MixesComponent, canActivate: [AuthGuard]},
-  {path: 'manufacturers/add', component: ManufacturerAddComponent, canActivate: [AuthGuard]},
-  {path: 'flavours/add', component: FlavourAddComponent, canActivate: [AuthGuard]},
+  { path: '', redirectTo: '/home', pathMatch: 'full', canActivate: [AuthGuard]},
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  { path: 'manufacturers', component: ManufacturersComponent, canActivate: [AuthGuard]},
+  { path: 'flavours', component: FlavoursComponent, canActivate: [AuthGuard]},
+  { path: 'login', component: LoginComponent},
+  { path: 'logout', component: LogoutComponent, canActivate: [AuthGuard]},
+  { path: 'manufacturers/detail/:id', component: ManufacturerDetailComponent, canActivate: [AuthGuard]},
+  { path: 'flavours/detail/:id', component: FlavourDetailComponent, canActivate: [AuthGuard]},
+  { path: 'mix/detail/:id', component: MixDetailComponent, canActivate: [AuthGuard]},
+  { path: 'mix', component:MixesComponent, canActivate: [AuthGuard]},
+  { path: 'manufacturers/add', component: ManufacturerAddComponent, canActivate: [AuthGuard]},
+  { path: 'flavours/add', component: FlavourAddComponent, canActivate: [AuthGuard]},
+  { path: 'mix/add', component: MixAddComponent, canActivate: [AuthGuard]},
+  { path: 'mix/detail/:id/compound/add', component: CompoundComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

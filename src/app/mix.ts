@@ -1,5 +1,3 @@
-import {Flavour} from "./flavour";
-
 export interface Mix {
   id: number;
   mix_name: string;

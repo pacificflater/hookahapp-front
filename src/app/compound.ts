@@ -1,6 +1,6 @@
 export interface Compound {
   id: number,
-  persentage: number;
+  percentage: number;
   mix: number;
   flavour: {
     id: number,

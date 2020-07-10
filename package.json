@@ -24,6 +24,7 @@
     "@angular/router": "~9.1.9",
     "@ng-bootstrap/ng-bootstrap": "^6.1.0",
     "bootstrap": "^4.4.0",
+    "mdbootstrap": "^4.19.1",
     "moment": "^2.26.0",
     "ng-starrating": "^1.0.20",
     "rxjs": "~6.5.4",
