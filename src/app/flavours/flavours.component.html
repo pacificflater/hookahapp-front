@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg"><h2>Flavours</h2></div>
+  </div>
+  <div class="row">
+    <div class="col-lg">
+      <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" #input>
+      </mat-form-field>
+      <button mat-raised-button class="float-right custom" color="primary" (click)="openDialog()">Add new flavour</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg">
+
+      <div class="flavour-table mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+          <ng-container matColumnDef="flavour_name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let flavour">
+              <a routerLink="/flavours/detail/{{flavour.id}}">{{flavour.flavour_name}}</a>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="manufacturer">
+            <th mat-header-cell *matHeaderCellDef> Manufacturer</th>
+            <td mat-cell *matCellDef="let flavour">
+              <a routerLink="/manufacturers/detail/{{flavour.manufacturer.id}}">{{flavour.manufacturer.name}}</a>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="in_stock">
+            <th mat-header-cell *matHeaderCellDef>In stock</th>
+            <td mat-cell *matCellDef="let flavour">
+              <div *ngIf="flavour.in_stock; else elseBlock"><mat-icon aria-hidden="false">done</mat-icon></div>
+              <ng-template #elseBlock><mat-icon aria-hidden="false">block</mat-icon></ng-template>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="buttons">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let flavour">
+              <div class="btn-group float-right">
+                <button class="btn" routerLink="/flavours/detail/{{flavour.id}}"><mat-icon aria-hidden="false">edit</mat-icon></button>
+                <button class="btn" (click)="deleteFlavour(flavour)"><mat-icon aria-hidden="false">delete_forever</mat-icon></button>
+              </div>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true"></tr>
+          <tr mat-row *matRowDef="let flavour; columns: columnsToDisplay;"></tr>
+
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
