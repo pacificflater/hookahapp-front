@@ -26,20 +26,18 @@ export class MixAddComponent implements OnInit {
   mix: Mix;
   mixes: Mix[];
   flavours: Flavour[]
-  selectedRating: number;
-  selectedStrength: number;
-  strength: number;
-  rating: number;
+  strength = 0
+  rating = 0
 
 
   addMix(mix_name: string, rating: number, strength: number): void {
+    console.log(rating)
     mix_name = mix_name.trim();
     if (!mix_name) { return; }
       this.mixService.addMixes({ mix_name, rating, strength} as Mix)
     .subscribe(mix => {
       this.mixes.push(mix);
     });
-    // return this.compoundService.addCompound(selectedFlavour, selectedPercentage)
   }
 
   // getFlavours(): void {
