@@ -6,6 +6,7 @@ import {MixService} from "../_services/mix.service";
 import {Compound} from "../compound";
 import {CompoundService} from "../_services/compound.service";
 import {ActivatedRoute} from "@angular/router";
+import { NewCompound} from "../compound";
 
 @Component({
   selector: 'app-compound',
@@ -30,6 +31,7 @@ export class CompoundComponent implements OnInit {
   mixes: Mix[];
   mix: Mix;
   compounds: Compound[];
+  newCompound: NewCompound[];
   selectedFlavour: number;
 
   getCurrentMix(): void {
@@ -41,12 +43,10 @@ export class CompoundComponent implements OnInit {
   }
 
   addCompound(flavour: number, percentage: number): void {
-    // const mix_id = +this.route.snapshot.paramMap.get('id');
     let mix = this.mix.id
-    console.log(flavour, percentage, mix)
-    this.compoundService.addCompound({ flavour, percentage, mix } as Compound)
-    .subscribe(compound => {
-      this.compounds.push(compound);
+    this.compoundService.addCompound({ flavour, percentage, mix } as NewCompound)
+    .subscribe(newCompound => {
+      this.newCompound.push(newCompound);
     });
   }
 

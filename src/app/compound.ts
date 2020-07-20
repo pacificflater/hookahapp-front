@@ -9,3 +9,9 @@ export interface Compound {
     in_stock: boolean,
   }
 }
+
+export  interface NewCompound {
+  percentage: number;
+  mix: number;
+  flavour: number;
+}

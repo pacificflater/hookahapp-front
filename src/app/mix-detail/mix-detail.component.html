@@ -25,7 +25,7 @@
             <div *ngIf="mix.compound.length > 0; else elseBlock">
               <mat-list-item >
                 <mat-chip-list >
-                  <mat-chip *ngFor="let compound of mix.compound">{{compound.flavour.flavour_name}} - {{compound.percentage}}%
+                  <mat-chip title="{{compound.flavour.manufacturer.name}}: {{compound.flavour.flavour_name}}" *ngFor="let compound of mix.compound">{{compound.flavour.flavour_name}} - {{compound.percentage}}%
                     <button class="btn" (click)="remove(compound.id)"><mat-icon >cancel</mat-icon></button>
                   </mat-chip>
                 </mat-chip-list>

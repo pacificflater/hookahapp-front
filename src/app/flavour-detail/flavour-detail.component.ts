@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { Flavour } from "../flavour";
-import { FlavourUpdate } from "../flavour";
+import { NewFlavour } from "../flavour";
 import {ActivatedRoute} from "@angular/router";
 import {Location} from "@angular/common";
 import { FlavourService } from "../_services/flavour.service"
@@ -44,7 +44,6 @@ export class FlavourDetailComponent implements OnInit {
 
   save(): void {
     this.flavour.in_stock = this.checked;
-    this.flavour.manufacturer = this.flavour.manufacturer.id
     this.flavourServuce.updateFlavour(this.flavour)
       .subscribe(() => this.goBack());
   }

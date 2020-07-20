@@ -46,6 +46,7 @@ import { MixAddComponent } from './mix-add/mix-add.component';
 import { MatChipsModule} from "@angular/material/chips";
 import { CompoundComponent } from './compound/compound.component';
 import {MatTreeModule} from "@angular/material/tree";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -96,7 +97,8 @@ import {MatTreeModule} from "@angular/material/tree";
     MatBadgeModule,
     MatChipsModule,
     MatSliderModule,
-    MatTreeModule
+    MatTreeModule,
+    MatSnackBarModule
 
   ],
 

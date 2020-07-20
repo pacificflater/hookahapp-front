@@ -41,7 +41,7 @@
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Compound</th>
             <td mat-cell *matCellDef="let mix" >
               <mat-chip-list >
-                <mat-chip *ngFor="let compound of mix.compound">{{compound.flavour.flavour_name}} - {{compound.percentage}}%</mat-chip>
+                <mat-chip title="{{compound.flavour.manufacturer.name}}: {{compound.flavour.flavour_name}}" *ngFor="let compound of mix.compound">{{compound.flavour.flavour_name}} - {{compound.percentage}}%</mat-chip>
               </mat-chip-list>
               </td>
           </ng-container>

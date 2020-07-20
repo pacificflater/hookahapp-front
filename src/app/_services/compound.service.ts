@@ -3,8 +3,7 @@ import {environment} from "../../environments/environment";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { Compound } from "../compound";
 import  { Observable } from "rxjs";
-import {Manufacturer} from "../manufacturer";
-import {Flavour} from "../flavour";
+import { NewCompound} from "../compound";
 
 @Injectable({
   providedIn: 'root'
@@ -24,9 +23,11 @@ export class CompoundService {
     return this.http.get<Compound>(this.compoundUrl + `${compound_id}`)
   }
 
-  addCompound(compound: Compound): Observable<Compound> {
-    return this.http.post<Compound>(this.compoundUrl, compound)
+  addCompound(compound: NewCompound): Observable<NewCompound> {
+    return this.http.post<NewCompound>(this.compoundUrl, compound)
     }
+
+
 
   deleteCompound(compound: Compound | number): Observable<Compound> {
       const id = typeof compound === 'number' ? compound: compound.id;

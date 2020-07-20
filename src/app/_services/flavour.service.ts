@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Flavour } from '../flavour';
+import {Flavour, NewFlavour} from '../flavour';
 import { Observable, of } from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from "../../environments/environment";
@@ -30,8 +30,8 @@ export class FlavourService {
     return this.http.get<Flavour>(this.flavoursUrl + `${flavour_id}/`)
   }
 
-  addFlavour(flavour: Flavour): Observable<Flavour> {
-    return this.http.post<Flavour>(this.flavoursUrl, flavour)
+  addFlavour(flavour: NewFlavour): Observable<NewFlavour> {
+    return this.http.post<NewFlavour>(this.flavoursUrl, flavour)
     }
 
   deleteFlavour(flavour: Flavour | number): Observable<Flavour> {

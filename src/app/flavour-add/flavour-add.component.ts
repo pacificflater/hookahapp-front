@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Flavour} from "../flavour";
+import {Flavour, NewFlavour} from "../flavour";
 import { FlavourService} from "../_services/flavour.service";
 import {ManufacturerService} from "../_services/manufacturer.service";
 import {Manufacturer} from "../manufacturer";
@@ -15,6 +15,7 @@ export class FlavourAddComponent implements OnInit {
               private manufacturerService: ManufacturerService) { }
 
   flavours: Flavour[];
+  newFlavour: NewFlavour[];
   manufacturer: Manufacturer;
   manufacturers: Manufacturer[];
   selectedManufacturer: number;
@@ -40,9 +41,9 @@ export class FlavourAddComponent implements OnInit {
 
     flavour_name = flavour_name.trim();
     if (!flavour_name) { return; }
-      this.flavourService.addFlavour({ flavour_name, in_stock, manufacturer, add_time } as Flavour)
+      this.flavourService.addFlavour({ flavour_name, in_stock, manufacturer, add_time } as NewFlavour)
     .subscribe(flavour => {
-      this.flavours.push(flavour);
+      this.newFlavour.push(flavour);
     });
   }
 
