@@ -11,6 +11,14 @@
         <mat-checkbox value="checked" (click)="changeValue(checked)">In stock</mat-checkbox>
       </div>
       <div class="row">
+        <mat-form-field appearance="fill">
+          <mat-label>Type</mat-label>
+          <mat-select [(ngModel)]="selectedOptions" name="flavour_type" multiple>
+            <mat-option *ngFor="let flavour_type of flavourTypes" [value]="flavour_type.id">{{flavour_type.type}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="row">
         <mat-form-field>
           <mat-label>Manufacturer</mat-label>
           <mat-select [(ngModel)]="selectedManufacturer" name="manufacturer">
@@ -19,6 +27,6 @@
         </mat-form-field>
       </div>
     </form>
-    <button mat-raised-button color="primary" (click)="addFlavour(flavour_name.value, checked, selectedManufacturer ); flavour_name.value=''" [mat-dialog-close]="flavour_name.value">Add</button>
+    <button mat-raised-button color="primary" (click)="addFlavour(flavour_name.value, checked, selectedManufacturer, selectedOptions ); flavour_name.value=''" [mat-dialog-close]="flavour_name.value">Add</button>
 </div>
 
