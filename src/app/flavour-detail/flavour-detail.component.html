@@ -11,9 +11,21 @@
               <mat-label>Flavour name:</mat-label>
               <input matInput placeholder="name" [(ngModel)]="flavour.flavour_name" [name]="flavour.flavour_name">
             </mat-form-field><br>
-              <mat-checkbox value="checked" (click)="changeValue(checked)" [checked]="flavour.in_stock">In stock</mat-checkbox><br>
+              <mat-checkbox value="checked" (change)="changeValue()" [checked]="flavour.in_stock">In stock</mat-checkbox><br>
+            <mat-form-field appearance="fill">
+              <mat-label>Type</mat-label>
+              <mat-select [(ngModel)]="flavour.flavour_type" name="flavour_type" multiple>
+                <mat-option *ngFor="let flavour_type of flavourTypes" [value]="flavour_type.id">{{flavour_type.type}}</mat-option>
+              </mat-select>
+            </mat-form-field>
           </form>
-          <span>Manufactrurer: {{flavour.manufacturer.name}}</span>
+          <span>Manufactrurer: {{flavour.manufacturer.name}}</span><br>
+<!--          <mat-chip-list *ngFor="let flavour_type of flavour.flavour_type">-->
+<!--            <mat-chip>-->
+<!--              {{flavour_type.type}}-->
+<!--              <mat-icon matChipRemove>cancel</mat-icon>-->
+<!--            </mat-chip>-->
+<!--          </mat-chip-list>-->
         </mat-card-content>
         <mat-card-actions>
           <button mat-raised-button color="primary" (click)="save()">Save</button>
