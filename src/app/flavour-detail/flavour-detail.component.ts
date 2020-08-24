@@ -8,6 +8,7 @@ import { ManufacturerService } from "../_services/manufacturer.service";
 import { Manufacturer } from "../manufacturer";
 import {FlavourTypeService} from "../_services/flavour-type.service";
 import {FlavourType} from "../flavour-type";
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-flavour-detail',
@@ -33,6 +34,7 @@ export class FlavourDetailComponent implements OnInit {
   manufacturerId: number;
   selectedManufacturer: number;
   checked: boolean;
+  // selectedOptions = new FormControl(this.flavour.flavour_type)
 
   ngOnInit(): void {
     this.getFlavour();
@@ -47,6 +49,7 @@ export class FlavourDetailComponent implements OnInit {
   }
 
   save(): void {
+    this.flavour.flavour_type.map(({id}) => id)
     this.flavourServuce.updateFlavour(this.flavour)
       .subscribe(() => this.goBack());
   }

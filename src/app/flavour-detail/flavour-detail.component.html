@@ -8,12 +8,12 @@
         <mat-card-content>
           <form>
             <mat-form-field>
-              <mat-label>Flavour name:</mat-label>
+              <mat-label>Аромат</mat-label>
               <input matInput placeholder="name" [(ngModel)]="flavour.flavour_name" [name]="flavour.flavour_name">
             </mat-form-field><br>
               <mat-checkbox value="checked" (change)="changeValue()" [checked]="flavour.in_stock">In stock</mat-checkbox><br>
             <mat-form-field appearance="fill">
-              <mat-label>Type</mat-label>
+              <mat-label *ngFor="let type of flavour.flavour_type">{{type.type}} </mat-label>
               <mat-select [(ngModel)]="flavour.flavour_type" name="flavour_type" multiple>
                 <mat-option *ngFor="let flavour_type of flavourTypes" [value]="flavour_type.id">{{flavour_type.type}}</mat-option>
               </mat-select>

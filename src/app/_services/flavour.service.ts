@@ -41,9 +41,13 @@ export class FlavourService {
   }
 
   updateFlavour(flavour: Flavour): Observable<any> {
-    const body = {flavour_name: flavour.flavour_name, manufacturer: flavour.manufacturer.id, in_stock: flavour.in_stock, add_time: flavour.add_time}
-    return this.http.put(this.flavoursUrl + `${flavour.id}/`, body, this.httpOptions)
-
+    if(flavour.flavour_type.some(value => { return typeof value == "object"})){
+      const body = {flavour_name: flavour.flavour_name, flavour_type: flavour.flavour_type.map(({id}) => id), manufacturer: flavour.manufacturer.id, in_stock: flavour.in_stock, add_time: flavour.add_time}
+      return this.http.put(this.flavoursUrl + `${flavour.id}/`, body, this.httpOptions)
+    }else{
+      const body = {flavour_name: flavour.flavour_name, flavour_type: flavour.flavour_type, manufacturer: flavour.manufacturer.id, in_stock: flavour.in_stock, add_time: flavour.add_time}
+      return this.http.put(this.flavoursUrl + `${flavour.id}/`, body, this.httpOptions)
+    }
   }
 
 
