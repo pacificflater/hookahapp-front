@@ -37,8 +37,9 @@ export class ManufacturerService {
     )
   }
 
-  addManufacturer(manufacturerName: Manufacturer): Observable<Manufacturer> {
-    return this.http.post<Manufacturer>(this.manufacturersUrl, manufacturerName)
+  addManufacturer(manufacturer: Manufacturer): Observable<Manufacturer> {
+    const body = {name: manufacturer.name, type: manufacturer.type.id}
+    return this.http.post<Manufacturer>(this.manufacturersUrl, body)
     }
 
   deleteManufacturer(manufacturer: Manufacturer | number): Observable<Manufacturer> {
@@ -47,7 +48,8 @@ export class ManufacturerService {
   }
 
   updateManufacturer(manufacturer: Manufacturer): Observable<any> {
-    return this.http.put(this.manufacturersUrl + `${manufacturer.id}/`, manufacturer, this.httpOptions)
+    const body = {id: manufacturer.id, name: manufacturer.name, type: manufacturer.type.id }
+    return this.http.put(this.manufacturersUrl + `${manufacturer.id}/`, body, this.httpOptions)
   }
 
 }

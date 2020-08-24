@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h2 class="col-lg">{{manufacturer.name}} details</h2>
+    <h2 class="col-lg">{{manufacturer.name}}</h2>
   </div>
   <div class="row">
     <div class="col-lg">
@@ -8,14 +8,23 @@
         <mat-card-content>
           <form>
             <mat-form-field>
-              <mat-label>Manufacturer name:</mat-label>
+              <mat-label>Производитель:</mat-label>
               <input matInput placeholder="name" [(ngModel)]="manufacturer.name" [name]="manufacturer.name">
+            </mat-form-field><br>
+            <mat-form-field>
+              <mat-label >
+                <div *ngIf="manufacturer.type !== null; else elseBlock1">{{manufacturer.type.type}}</div>
+                <ng-template #elseBlock1>Выберите тип..</ng-template>
+              </mat-label>
+              <mat-select [(ngModel)]="manufacturer.type" name="manufacturerType">
+                <mat-option *ngFor="let type of manufacturerTypes" [value]="type">{{type.type}}</mat-option>
+              </mat-select>
             </mat-form-field>
           </form>
           <mat-expansion-panel (opened) ="panelOpenState = true"
                            (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
-            <mat-panel-title><span>Flavours</span></mat-panel-title>
+            <mat-panel-title><span>Ароматы</span></mat-panel-title>
           </mat-expansion-panel-header>
           <mat-list>
             <div *ngIf="manufacturer.flavours.length > 0; else elseBlock">
@@ -23,7 +32,7 @@
                 <a routerLink="/flavours/detail/{{flavour.id}}">{{flavour.flavour_name}}</a>
               </mat-list-item>
             </div>
-            <ng-template #elseBlock>No flavours..</ng-template>
+            <ng-template #elseBlock>Нет ароматов..</ng-template>
           </mat-list>
       </mat-expansion-panel>
         </mat-card-content>

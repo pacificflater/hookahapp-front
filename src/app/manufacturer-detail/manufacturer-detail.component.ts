@@ -3,6 +3,8 @@ import { Manufacturer } from "../manufacturer";
 import {ActivatedRoute, Route} from '@angular/router';
 import { Location } from '@angular/common';
 import { ManufacturerService} from "../_services/manufacturer.service";
+import {ManufacturerTypeService} from "../_services/manufacturer-type.service";
+import {ManufacturerType} from "../manufacturer-type";
 
 @Component({
   selector: 'app-manufacturer-detail',
@@ -12,18 +14,22 @@ import { ManufacturerService} from "../_services/manufacturer.service";
 
 export class ManufacturerDetailComponent implements OnInit {
 
-  @Input() manufacturer: Manufacturer;
+  manufacturer: Manufacturer;
   panelOpenState = false;
 
 
   constructor(
     private route: ActivatedRoute,
     private manufacturerServuce: ManufacturerService,
-    private location: Location
+    private location: Location,
+    private manufacturerTypeService: ManufacturerTypeService
   ) { }
+
+  manufacturerTypes: ManufacturerType[];
 
   ngOnInit(): void {
     this.getManufacturer();
+    this.getManufacturerType()
   }
 
   getManufacturer(): void {
@@ -39,5 +45,10 @@ export class ManufacturerDetailComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  getManufacturerType(): void {
+    this.manufacturerTypeService.getManufacturerType()
+      .subscribe(manufacturerTypes => this.manufacturerTypes = manufacturerTypes)
   }
 }
