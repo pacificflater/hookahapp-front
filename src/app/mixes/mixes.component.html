@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg"><h2>Mixes</h2></div>
+    <div class="col-lg"><h2>Миксы</h2></div>
   </div>
   <div class="row">
     <div class="col-lg">
@@ -8,43 +8,43 @@
         <mat-label>Filter</mat-label>
         <input matInput (keyup)="applyFilter($event)" #input>
       </mat-form-field>
-      <button mat-raised-button class="float-right custom" color="primary" (click)="openDialog()">Add new mix</button>
+      <button mat-raised-button class="float-right custom" color="primary" (click)="openDialog()">Новый микс</button>
     </div>
   </div>
   <div class="row">
     <div class="col-lg">
-      <div class="mat-elevation-z8">
-        <table mat-table matSort class="mix-table" [dataSource]="dataSource">
-
-          <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <div class="mix-table mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort >
+          <ng-container matColumnDef="mix_name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Микс</th>
             <td mat-cell *matCellDef="let mix">
               <a routerLink="/mix/detail/{{mix.id}}">{{mix.mix_name}}</a>
             </td>
           </ng-container>
 
           <ng-container matColumnDef="strength">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Strength</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Крепость</th>
             <td mat-cell *matCellDef="let mix">
               {{mix.strength}}/10
             </td>
           </ng-container>
 
           <ng-container matColumnDef="rating">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Rating</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Рейтинг</th>
             <td mat-cell *matCellDef="let mix">
               <ngb-rating [(rate)]="mix.rating" [readonly]="true" max="5"></ngb-rating>
             </td>
           </ng-container>
 
           <ng-container matColumnDef="compound">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Compound</th>
+            <th mat-header-cell *matHeaderCellDef>Состав</th>
             <td mat-cell *matCellDef="let mix" >
               <mat-chip-list >
                 <mat-chip title="{{compound.flavour.manufacturer.name}}: {{compound.flavour.flavour_name}}" *ngFor="let compound of mix.compound">{{compound.flavour.flavour_name}} - {{compound.percentage}}%</mat-chip>
               </mat-chip-list>
               </td>
           </ng-container>
+
           <ng-container matColumnDef="buttons">
             <th mat-header-cell *matHeaderCellDef></th>
             <td mat-cell *matCellDef="let mix">
@@ -55,13 +55,12 @@
             </td>
           </ng-container>
 
-          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
-          <tr mat-row *matRowDef="let mix; columns: displayedColumns;"></tr>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           <tr class="mat-row" *matNoDataRow>
             <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
           </tr>
         </table>
-
       </div>
     </div>
   </div>

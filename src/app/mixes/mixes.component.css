@@ -22,3 +22,19 @@ a {
 h2 {
   margin-top: 15px;
 }
+
+.mat-column-mix {
+  width: 30%
+}
+
+.mat-column-rating {
+  width: 10%;
+}
+
+.mat-column-strength {
+  width: 10%;
+}
+
+.mat-column-compound {
+  width: 45%;
+}

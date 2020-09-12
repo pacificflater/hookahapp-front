@@ -1,51 +1,84 @@
-import { Component, OnInit } from '@angular/core';
-import { Flavour} from "../flavour";
-import { Manufacturer } from "../manufacturer";
-import { FlavourService } from "../_services/flavour.service";
-import { MessagesService } from "../_services/messages.service";
-import { MatDialog} from "@angular/material/dialog";
-import { FlavourAddComponent} from "../flavour-add/flavour-add.component";
-import {MatTableDataSource} from "@angular/material/table";
+import {Component, OnInit, ViewChild} from '@angular/core';
+import { Flavour} from '../flavour';
+import { Manufacturer } from '../manufacturer';
+import { FlavourService } from '../_services/flavour.service';
+import { MessagesService } from '../_services/messages.service';
+import { MatDialog} from '@angular/material/dialog';
+import { FlavourAddComponent} from '../flavour-add/flavour-add.component';
+import {MatTable, MatTableDataSource} from '@angular/material/table';
+import { Subscription} from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import 'rxjs/add/operator/filter';
+import {MatSort} from '@angular/material/sort';
+import {MixesItem} from '../mixes/mixes-datasource';
 
 
 
 @Component({
   selector: 'app-flavours',
   templateUrl: './flavours.component.html',
-  styleUrls: ['./flavours.component.css']
+  styleUrls: ['./flavours.component.scss']
 })
 export class FlavoursComponent implements OnInit {
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatTable) table: MatTable<MixesItem>;
+  in_stock: boolean;
 
+  private routeSubscription: Subscription;
+  private querySubscription: Subscription;
   constructor(private flavourService: FlavourService,
               private messagesService: MessagesService,
               public dialog: MatDialog,
-  ) {}
+              private route: ActivatedRoute
+  ) {
+    // this.routeSubscription = route.params.subscribe(params=>this.in_stock=params['in_stock']);
+    this.querySubscription = route.queryParams.subscribe(
+            (queryParam: any) => {
+                this.in_stock = queryParam.in_stock;
+            }
+        );
+  }
 
   flavours: Flavour[];
   manufacturer: Manufacturer;
-  columnsToDisplay = ['flavour_name','manufacturer', 'in_stock', 'buttons'];
+  columnsToDisplay = ['flavour_name', 'manufacturer', 'in_stock', 'buttons'];
   public dataSource;
 
   ngOnInit(): void {
     this.getFlavours();
+    this.ngAfterViewInit();
   }
 
   getFlavours(): void {
     this.flavourService.getFlavours()
     .subscribe(res => {
-        this.dataSource = new MatTableDataSource(res)
-      })
+        this.dataSource = new MatTableDataSource(res);
+      });
   }
 
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+    this.table.dataSource = this.dataSource;
+  }
+
+  // getFlavoursFiltered(): void {
+  //   const param = this.in_stock;
+  //   console.log(param);
+  //   this.flavourService.getFlavoursFiltered(param)
+  //     .subscribe( res => {
+  //       this.dataSource = new MatTableDataSource((res));
+  //     });
+  // }
+
   deleteFlavour(flavour: Flavour): void {
-    this.messagesService.add(` ${flavour.flavour_name} flavour deleted`)
+    this.messagesService.add(` ${flavour.flavour_name} flavour deleted`);
     this.flavourService.deleteFlavour(flavour).subscribe();
   }
 
   openDialog() {
     const dialogRef = this.dialog.open(FlavourAddComponent);
     dialogRef.afterClosed().subscribe(result => {
-      this.messagesService.add(`${result} flavour added`)
+      this.messagesService.add(`${result} flavour added`);
     });
   }
 
