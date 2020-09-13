@@ -22,26 +22,14 @@ import {MixesItem} from '../mixes/mixes-datasource';
 export class FlavoursComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<MixesItem>;
-  in_stock: boolean;
-
-  private routeSubscription: Subscription;
-  private querySubscription: Subscription;
   constructor(private flavourService: FlavourService,
               private messagesService: MessagesService,
               public dialog: MatDialog,
-              private route: ActivatedRoute
-  ) {
-    // this.routeSubscription = route.params.subscribe(params=>this.in_stock=params['in_stock']);
-    this.querySubscription = route.queryParams.subscribe(
-            (queryParam: any) => {
-                this.in_stock = queryParam.in_stock;
-            }
-        );
-  }
+  ) { }
 
   flavours: Flavour[];
   manufacturer: Manufacturer;
-  columnsToDisplay = ['flavour_name', 'manufacturer', 'in_stock', 'buttons'];
+  columnsToDisplay = ['flavour_name', 'manufacturer.name', 'in_stock', 'buttons'];
   public dataSource;
 
   ngOnInit(): void {
@@ -57,18 +45,15 @@ export class FlavoursComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
     this.table.dataSource = this.dataSource;
+    this.dataSource.sortingDataAccessor = (item, property) => {
+    switch (property) {
+      case 'manufacturer.name': return item.manufacturer.name;
+      default: return item[property];
+    }
+  };
+    this.dataSource.sort = this.sort;
   }
-
-  // getFlavoursFiltered(): void {
-  //   const param = this.in_stock;
-  //   console.log(param);
-  //   this.flavourService.getFlavoursFiltered(param)
-  //     .subscribe( res => {
-  //       this.dataSource = new MatTableDataSource((res));
-  //     });
-  // }
 
   deleteFlavour(flavour: Flavour): void {
     this.messagesService.add(` ${flavour.flavour_name} flavour deleted`);
@@ -86,6 +71,5 @@ export class FlavoursComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
 
 }
