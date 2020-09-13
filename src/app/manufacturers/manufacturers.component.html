@@ -1,7 +1,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg"><h2>Manufacturers</h2></div>
+    <div class="col-lg"><h2>Производители</h2></div>
   </div>
   <div class="row">
     <div class="col-lg">
@@ -9,17 +9,25 @@
           <mat-label>Filter</mat-label>
           <input matInput (keyup)="applyFilter($event)" #input>
         </mat-form-field>
-        <button mat-raised-button class="float-right custom" color="primary" (click)="openDialog()">Add new manufacturer</button>
+        <button mat-raised-button class="float-right custom" color="primary" (click)="openDialog()">Новый производитель</button>
     </div>
   </div>
+
   <div class="row">
     <div class="col-lg">
       <div class="manufacturer-table mat-elevation-z8">
-        <table mat-table [dataSource] = "dataSource">
+        <table mat-table [dataSource] = "dataSource" matSort>
           <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Производитель </th>
             <td mat-cell *matCellDef="let manufacturer">
               <a routerLink="/manufacturers/detail/{{manufacturer.id}}">{{manufacturer.name}}</a>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="type.type">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Табак/Чай </th>
+            <td mat-cell *matCellDef="let manufacturer">
+              <div *ngIf="manufacturer.type === null; else elseBlock">-</div>
+              <ng-template #elseBlock>{{manufacturer.type.type}}</ng-template>
             </td>
           </ng-container>
           <ng-container matColumnDef="buttons">
@@ -41,4 +49,10 @@
   </div>
   </div>
 </div>
-
+<!--  <ag-grid-angular-->
+<!--      style="width: 800px; height: 700px;"-->
+<!--      class="ag-theme-alpine"-->
+<!--      [rowData]="manufacturers"-->
+<!--      [columnDefs]="columnsToDisplay"-->
+<!--  >-->
+<!--  </ag-grid-angular>-->
