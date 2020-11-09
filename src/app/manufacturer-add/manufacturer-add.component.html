@@ -1,12 +1,18 @@
 
 <div class="container">
-  <h2>Add new manufacturer</h2>
+  <h2>Новый производитель</h2>
   <form>
         <mat-form-field>
-          <mat-label>Manufacturer name</mat-label>
+          <mat-label>Введите имя</mat-label>
           <input matInput placeholder="Enter name" #manufacturerName>
+        </mat-form-field><br>
+        <mat-form-field>
+          <mat-label>Табак/Чай</mat-label>
+          <mat-select [(ngModel)]="selectedType" name="manufacturerType">
+            <mat-option *ngFor="let type of manufacturerTypes" [value]="type">{{type.type}}</mat-option>
+          </mat-select>
         </mat-form-field>
       </form>
-  <button mat-raised-button color="primary" (click)="addManufacturer(manufacturerName.value); manufacturerName.value=''" [mat-dialog-close]="manufacturerName.value">Add</button>
+  <button mat-raised-button color="primary" (click)="addManufacturer(manufacturerName.value, selectedType); manufacturerName.value=''" [mat-dialog-close]="manufacturerName.value">Add</button>
 </div>
 

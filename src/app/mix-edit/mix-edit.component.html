@@ -1,0 +1,55 @@
+
+<div class="container">
+  <div class="row">
+    <h2 class="col-lg">{{mix.mix_name}}</h2>
+  </div>
+  <div class="row">
+    <div class="col-lg">
+      <button mat-raised-button class="float-right custom" color="primary" (click)="openDialog()">Добавить аромат</button>
+    </div>
+  </div>
+  <div class="row ">
+    <div class="col-lg">
+      <mat-card class="add-card mat-elevation-z8">
+        <mat-card-content>
+          <form>
+        <mat-form-field>
+          <mat-label>Микс</mat-label>
+          <input matInput placeholder="name" [(ngModel)]="mix.mix_name" [name]="mix.mix_name">
+        </mat-form-field>
+            <br>
+            <mat-form-field>
+          <mat-label>
+            <div *ngIf="mix.bowl !== null; else elseBlock2">{{mix.bowl.name}}</div>
+            <ng-template #elseBlock2>Выберите чашу..</ng-template>
+          </mat-label>
+          <mat-select [(ngModel)]="mix.bowl" name="manufacturer">
+            <mat-option *ngFor="let bowl of bowls" [value]="bowl">{{bowl.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+    <br>
+        <mat-label>Оценка</mat-label>
+        <ngb-rating [(rate)]="mix.rating" [readonly]="false" max="5"></ngb-rating><br>
+        <mat-label>Крепость</mat-label>
+        <ngb-rating [(rate)]="mix.strength" max="10"></ngb-rating>
+      </form>
+            <div *ngIf="mix.compound.length > 0; else elseBlock">
+              <mat-list-item >
+                <mat-chip-list >
+                  <mat-chip title="{{compound.flavour.manufacturer.name}}: {{compound.flavour.flavour_name}}" *ngFor="let compound of mix.compound">{{compound.flavour.flavour_name}} - {{compound.percentage}}%
+                    <button class="btn" (click)="openCompoundEditDialog()"><mat-icon>edit</mat-icon></button>
+                    <button class="btn" (click)="remove(compound.id)"><mat-icon>cancel</mat-icon></button>
+                  </mat-chip>
+                </mat-chip-list>
+              </mat-list-item>
+            </div>
+            <ng-template #elseBlock>No flavours..</ng-template>
+    </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button (click)="goBack()">Back</button>
+          <button mat-raised-button color="primary" (click)="save()">Save</button>
+    </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

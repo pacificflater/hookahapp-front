@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from "../_services/user.service";
-import { FormGroup, FormBuilder, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
-import { MessagesService } from "../_services/messages.service";
+import {UserService} from '../_services/user.service';
+import { FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import { MessagesService } from '../_services/messages.service';
 
 @Component({
   selector: 'login',
@@ -11,17 +11,17 @@ import { MessagesService } from "../_services/messages.service";
 })
 
 export class LoginComponent {
-    form:FormGroup;
+    form: FormGroup;
     showErrorMessage: boolean;
 
-    constructor(private fb:FormBuilder,
-                 private authService: UserService,
-                 private router: Router,
-                 private messagesService: MessagesService) {
+    constructor(private fb: FormBuilder,
+                private authService: UserService,
+                private router: Router,
+                private messagesService: MessagesService) {
 
         this.form = this.fb.group({
-            username: ['',Validators.required],
-            password: ['',Validators.required]
+            username: ['', Validators.required],
+            password: ['', Validators.required]
         });
     }
 

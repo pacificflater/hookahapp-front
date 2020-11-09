@@ -1,18 +1,26 @@
 <div class="container">
-  <h2>Add new mix</h2>
+  <h2>Новый микс</h2>
   <form>
         <mat-form-field>
-          <mat-label>Mix name</mat-label>
+          <mat-label>Название микса</mat-label>
           <input matInput placeholder="Enter name" #mixName>
         </mat-form-field>
     <br>
-          <mat-label>Strength</mat-label>
+        <mat-form-field>
+          <mat-label>Чаша</mat-label>
+          <mat-select [(ngModel)]="selectedBowl" name="manufacturer">
+            <mat-option *ngFor="let bowl of bowls" [value]="bowl.id">{{bowl.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+    <br>
+          <mat-label>Крепость</mat-label>
           <ngb-rating [(rate)]="strength" max="10"></ngb-rating>
     <br>
-          <mat-label>Rating</mat-label>
+          <mat-label>Оценка</mat-label>
           <ngb-rating [(rate)]="rating" max="5" ></ngb-rating>
     <br>
+
       </form>
-  <button mat-raised-button color="primary" (click)="addMix(mixName.value,rating, strength ); mixName.value=''" [mat-dialog-close]="mixName.value">Add</button>
+  <button mat-raised-button color="primary" (click)="addMix(mixName.value,rating, strength, selectedBowl); mixName.value=''" [mat-dialog-close]="mixName.value">Add</button>
 </div>
 

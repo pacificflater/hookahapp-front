@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ManufacturersComponent } from './manufacturers/manufacturers.component';
-import { ManufacturerDetailComponent } from './manufacturer-detail/manufacturer-detail.component';
+import { ManufacturerComponent } from './manufacturer/manufacturer.component';
+import { ManufacturerEditComponent } from './manufacturer-edit/manufacturer-edit.component';
 import { HttpClientModule , HTTP_INTERCEPTORS} from '@angular/common/http';
 import { MessagesComponent } from './messages/messages.component';
 import { LoginComponent } from './login/login.component';
@@ -12,13 +12,13 @@ import { UserService} from './_services/user.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor} from './helpers/auth.interceptor';
 import { ErrorInterceptor} from './helpers/error.interceptor';
-import { FlavoursComponent } from './flavours/flavours.component';
+import { FlavourComponent } from './flavour/flavour.component';
 import { LogoutComponent } from './logout/logout.component';
-import { FlavourDetailComponent } from './flavour-detail/flavour-detail.component';
+import { FlavourEditComponent } from './flavour-edit/flavour-edit.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
-import { MixesComponent } from './mixes/mixes.component';
+import { MixComponent } from './mix/mix.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -26,7 +26,6 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import { ManufacturerAddComponent } from './manufacturer-add/manufacturer-add.component';
 import { FlavourAddComponent } from './flavour-add/flavour-add.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ManufacturerSearchComponent } from './manufacturer-search/manufacturer-search.component';
 import { SortableDirective } from './sortable.directive';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule} from '@angular/material/button';
@@ -41,7 +40,7 @@ import { MatCheckboxModule} from '@angular/material/checkbox';
 import { MatOptionModule} from '@angular/material/core';
 import { MatSelectModule} from '@angular/material/select';
 import { MatBadgeModule} from '@angular/material/badge';
-import { MixDetailComponent } from './mix-detail/mix-detail.component';
+import { MixEditComponent } from './mix-edit/mix-edit.component';
 import { MixAddComponent } from './mix-add/mix-add.component';
 import { MatChipsModule} from '@angular/material/chips';
 import { CompoundComponent } from './compound/compound.component';
@@ -49,32 +48,38 @@ import {MatTreeModule} from '@angular/material/tree';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { CompoundDetailComponent } from './compound-detail/compound-detail.component';
 import {MatRadioModule} from '@angular/material/radio';
-import { AgGridModule } from 'ag-grid-angular';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { HeaderComponent } from './header/header.component';
 import {BarRatingModule} from 'ngx-bar-rating';
+import { ManufacturerDetailComponent } from './manufacturer-detail/manufacturer-detail.component';
+import { FlavourDetailComponent } from './flavour-detail/flavour-detail.component';
+import { MixDetailComponent } from './mix-detail/mix-detail.component';
+import {MDBBootstrapModule} from "angular-bootstrap-md";
+import {GoogleChartsModule} from "angular-google-charts";
 
 @NgModule({
   declarations: [
     AppComponent,
-    ManufacturersComponent,
-    ManufacturerDetailComponent,
+    ManufacturerComponent,
+    ManufacturerEditComponent,
     MessagesComponent,
     LoginComponent,
-    FlavoursComponent,
+    FlavourComponent,
     LogoutComponent,
-    FlavourDetailComponent,
+    FlavourEditComponent,
     HomeComponent,
-    MixesComponent,
+    MixComponent,
     ManufacturerAddComponent,
     FlavourAddComponent,
-    ManufacturerSearchComponent,
     SortableDirective,
-    MixDetailComponent,
+    MixEditComponent,
     MixAddComponent,
     CompoundComponent,
     CompoundDetailComponent,
     HeaderComponent,
+    ManufacturerDetailComponent,
+    FlavourDetailComponent,
+    MixDetailComponent,
   ],
 
   imports: [
@@ -108,9 +113,10 @@ import {BarRatingModule} from 'ngx-bar-rating';
     MatTreeModule,
     MatSnackBarModule,
     MatRadioModule,
-    AgGridModule.withComponents([]),
     MatGridListModule,
-    BarRatingModule
+    BarRatingModule,
+    MDBBootstrapModule.forRoot(),
+    GoogleChartsModule
   ],
 
   providers: [

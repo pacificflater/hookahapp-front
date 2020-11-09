@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { environment} from "../../environments/environment";
-import { User} from "../_models/user";
-import { tap, shareReplay } from "rxjs/operators";
-import { MessagesService } from "./messages.service";
+import { environment} from '../../environments/environment';
+import { User} from '../_models/user';
+import { tap, shareReplay } from 'rxjs/operators';
+import { MessagesService } from './messages.service';
 
-import * as moment from "moment";
+import * as moment from 'moment';
 
 @Injectable()
 export class UserService {
@@ -16,24 +16,24 @@ export class UserService {
 
     }
 
-    login(username:string, password:string ) {
+    login(username: string, password: string ) {
         return this.http.post<User>(this.baseUrl + '/api-token-auth/', {username, password}).pipe(
           tap(res => this.setSession(res)),
           shareReplay(),
-        )
+        );
 
     }
 
     private setSession(authResult) {
-        const expiresAt = moment().add(authResult.expiresIn,'second');
+        const expiresAt = moment().add(authResult.expiresIn, 'second');
         localStorage.setItem('id_token', authResult.token);
-        localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
+        localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()) );
 
     }
 
     logout() {
-        localStorage.removeItem("id_token");
-        localStorage.removeItem("expires_at");
+        localStorage.removeItem('id_token');
+        localStorage.removeItem('expires_at');
     }
 
     public isLoggedIn() {
@@ -45,7 +45,7 @@ export class UserService {
     }
 
     getExpiration() {
-        const expiration = localStorage.getItem("expires_at");
+        const expiration = localStorage.getItem('expires_at');
         const expiresAt = JSON.parse(expiration);
         return moment(expiresAt);
     }

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Flavour, NewFlavour} from "../flavour";
-import { FlavourType } from "../flavour-type";
-import { FlavourService} from "../_services/flavour.service";
-import {ManufacturerService} from "../_services/manufacturer.service";
-import {Manufacturer} from "../manufacturer";
-import {FlavourTypeService} from "../_services/flavour-type.service";
+import {Flavour, NewFlavour} from '../_models/flavour';
+import { FlavourType } from '../_models/flavour-type';
+import { FlavourService} from '../_services/flavour.service';
+import {ManufacturerService} from '../_services/manufacturer.service';
+import {Manufacturer} from '../_models/manufacturer';
+import {FlavourTypeService} from '../_services/flavour-type.service';
 
 @Component({
   selector: 'app-flavour-add',
@@ -24,8 +24,9 @@ export class FlavourAddComponent implements OnInit {
   manufacturers: Manufacturer[];
   selectedManufacturer: number;
   selectedOptions: number[];
-  checked: boolean = false;
-  flavour_type: number[]
+  checked = false;
+  // tslint:disable-next-line:variable-name
+  flavour_type: number[];
 
 
   ngOnInit(): void {
@@ -39,16 +40,17 @@ export class FlavourAddComponent implements OnInit {
         .subscribe(flavours => this.flavours = flavours);
   }
 
+  // tslint:disable-next-line:variable-name
   addFlavour(flavour_name: string, in_stock: boolean, manufacturer: number, flavour_type: number[]): void {
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
-    var add_time = yyyy + '-' + mm + '-' + dd;
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+    const yyyy = today.getFullYear();
+    // tslint:disable-next-line:variable-name
+    const add_time = yyyy + '-' + mm + '-' + dd;
     flavour_name = flavour_name.trim();
     if (!flavour_name) { return; }
-      console.log(this.flavour_type)
-      this.flavourService.addFlavour({ flavour_name, flavour_type, in_stock, manufacturer, add_time } as NewFlavour)
+    this.flavourService.addFlavour({ flavour_name, flavour_type, in_stock, manufacturer, add_time } as NewFlavour)
     .subscribe(flavour => {
       this.newFlavour.push(flavour);
     });
@@ -66,7 +68,4 @@ export class FlavourAddComponent implements OnInit {
     this.checked = !value;
   }
 
-  onNgModelChange(event){
-    console.log('on ng model change', event);
-  }
 }

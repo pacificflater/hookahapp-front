@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <h2 class="col">{{flavour.flavour_name}}</h2>
+  </div>
+  <div class="row">
+    <div class="col-lg">
+      <mat-card class="add-card mat-elevation-z8">
+        <mat-card-content>
+          <form>
+            <mat-form-field>
+              <mat-label>Аромат</mat-label>
+              <input matInput placeholder="name" [(ngModel)]="flavour.flavour_name" [name]="flavour.flavour_name">
+            </mat-form-field><br>
+              <mat-checkbox value="checked" (change)="changeValue()" [checked]="flavour.in_stock">В наличии</mat-checkbox><br>
+            <mat-form-field appearance="fill">
+              <mat-label *ngFor="let type of flavour.flavour_type">{{type.type}} </mat-label>
+              <mat-select [(ngModel)]="flavour.flavour_type" name="flavour_type" multiple>
+                <mat-option *ngFor="let flavour_type of flavourTypes" [value]="flavour_type.id">{{flavour_type.type}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </form>
+          <span>Производитель: {{flavour.manufacturer.name}}</span><br>
+<!--          <mat-chip-list *ngFor="let flavour_type of flavour.flavour_type">-->
+<!--            <mat-chip>-->
+<!--              {{flavour_type.type}}-->
+<!--              <mat-icon matChipRemove>cancel</mat-icon>-->
+<!--            </mat-chip>-->
+<!--          </mat-chip-list>-->
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button (click)="goBack()">Back</button>
+          <button mat-raised-button color="primary" (click)="save()">Save</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

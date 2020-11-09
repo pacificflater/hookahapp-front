@@ -1,15 +1,4 @@
 <mat-toolbar class="mat-elevation-z4" color="primary">
-<!--      <a routerLink="/home">{{title}}</a>-->
-<!--      <a routerLink="/manufacturers">Производители</a>-->
-<!--      <a routerLink="/flavours">Ароматы</a>-->
-<!--      <a routerLink="/mix">Миксы</a>-->
-<!--      <span class="spacer"></span>-->
-<!--      <div class="loginSection" *ngIf="userService.isLoggedIn();else elseBlock">-->
-<!--        <button mat-raised-button color="primary" routerLink="/logout"><mat-icon aria-hidden="false">exit_to_app</mat-icon></button>-->
-<!--      </div>-->
-<!--      <ng-template #elseBlock>-->
-<!--        <span><button mat-raised-button color="primary" routerLink="/login"><mat-icon aria-hidden="false">login</mat-icon></button></span>-->
-<!--      </ng-template>-->
     <div class="col justify-content-start"><a routerLink="/home">{{title}}</a></div>
     <div class="nav col-8 justify-content-start content">
       <span><a routerLink="/manufacturers">Производители</a></span>
@@ -17,7 +6,7 @@
       <span><a routerLink="/mix">Миксы</a></span>
     </div>
     <div class="nav col justify-content-end loginSection">
-      <span *ngIf="userService.isLoggedIn();else elseBlock"><button mat-raised-button color="primary" routerLink="/logout"><mat-icon aria-hidden="false">exit_to_app</mat-icon></button></span>
-      <ng-template #elseBlock><span><button mat-raised-button color="primary" routerLink="/login"><mat-icon aria-hidden="false">login</mat-icon></button></span></ng-template>
+      <span *ngIf="userService.isLoggedIn();else elseBlock"><button mat-icon-button color="basic" routerLink="/logout">Logout <mat-icon aria-hidden="false">exit_to_app</mat-icon></button></span>
+      <ng-template #elseBlock><span><button mat-icon-button color="basic" routerLink="/login">Login<mat-icon aria-hidden="false">login</mat-icon></button></span></ng-template>
     </div>
 </mat-toolbar>
