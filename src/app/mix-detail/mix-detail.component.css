@@ -1,0 +1,21 @@
+google-chart {
+  width: 100%
+}
+
+h2 {
+  margin-top: 15px;
+}
+
+.text-left {
+  position: absolute;
+  left: 5px;
+}
+
+.text-right {
+  position: absolute;
+  right: 5px;
+}
+
+mat-card-actions button{
+  justify-content: center;
+}
