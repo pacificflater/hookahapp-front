@@ -56,6 +56,11 @@ import { FlavourDetailComponent } from './flavour-detail/flavour-detail.componen
 import { MixDetailComponent } from './mix-detail/mix-detail.component';
 import {MDBBootstrapModule} from "angular-bootstrap-md";
 import {GoogleChartsModule} from "angular-google-charts";
+import {HomeComponentMobile} from "./mobile/home/home.component.mobile";
+import {ApplicationStateService} from "./_services/application-state.service";
+import { HeaderMobileComponent } from './mobile/header-mobile/header-mobile.component';
+import {MatMenuModule} from "@angular/material/menu";
+import { MixMobileComponent } from './mobile/mix-mobile/mix-mobile.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +85,9 @@ import {GoogleChartsModule} from "angular-google-charts";
     ManufacturerDetailComponent,
     FlavourDetailComponent,
     MixDetailComponent,
+    HomeComponentMobile,
+    HeaderMobileComponent,
+    MixMobileComponent
   ],
 
   imports: [
@@ -116,12 +124,13 @@ import {GoogleChartsModule} from "angular-google-charts";
     MatGridListModule,
     BarRatingModule,
     MDBBootstrapModule.forRoot(),
-    GoogleChartsModule
+    GoogleChartsModule,
+    MatMenuModule
   ],
 
   providers: [
     UserService, {provide : HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }, ApplicationStateService
   ],
 
   bootstrap: [AppComponent]

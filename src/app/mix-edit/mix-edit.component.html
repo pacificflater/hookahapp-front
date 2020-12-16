@@ -13,32 +13,44 @@
       <mat-card class="add-card mat-elevation-z8">
         <mat-card-content>
           <form>
-        <mat-form-field>
-          <mat-label>Микс</mat-label>
-          <input matInput placeholder="name" [(ngModel)]="mix.mix_name" [name]="mix.mix_name">
-        </mat-form-field>
-            <br>
+            <h4>Микс</h4>
             <mat-form-field>
-          <mat-label>
-            <div *ngIf="mix.bowl !== null; else elseBlock2">{{mix.bowl.name}}</div>
-            <ng-template #elseBlock2>Выберите чашу..</ng-template>
-          </mat-label>
-          <mat-select [(ngModel)]="mix.bowl" name="manufacturer">
-            <mat-option *ngFor="let bowl of bowls" [value]="bowl">{{bowl.name}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-    <br>
-        <mat-label>Оценка</mat-label>
-        <ngb-rating [(rate)]="mix.rating" [readonly]="false" max="5"></ngb-rating><br>
-        <mat-label>Крепость</mat-label>
-        <ngb-rating [(rate)]="mix.strength" max="10"></ngb-rating>
+              <input matInput [(ngModel)]="mix.mix_name" [name]="mix.mix_name">
+            </mat-form-field>
+            <br>
+            <h4>Чаша</h4>
+                <mat-form-field>
+              <mat-label>
+                <div *ngIf="mix.bowl !== null; else elseBlock2">{{mix.bowl.name}}</div>
+                <ng-template #elseBlock2>Выберите чашу..</ng-template>
+              </mat-label>
+              <mat-select [(ngModel)]="mix.bowl" name="manufacturer">
+                <mat-option *ngFor="let bowl of bowls" [value]="bowl">{{bowl.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+                <br>
+            <h4>Оценка</h4>
+            <mat-form-field>
+              <mat-label>{{mix.rating}}/5</mat-label>
+              <mat-select [(ngModel)]="mix.rating" aria-labelledby="hello" value="">
+                <mat-option *ngFor="let rating of rating" [value]="rating">{{rating}}/5</mat-option>
+              </mat-select>
+            </mat-form-field>
+                <br>
+            <h4>Крепость</h4>
+            <mat-form-field class="number">
+              <mat-label>{{mix.strength}}/10</mat-label>
+              <mat-select [(ngModel)]="mix.strength">
+                <mat-option *ngFor="let strength of strength" [value]="strength">{{strength}}/10</mat-option>
+              </mat-select>
+            </mat-form-field>
+        <br>
       </form>
             <div *ngIf="mix.compound.length > 0; else elseBlock">
               <mat-list-item >
                 <mat-chip-list >
                   <mat-chip title="{{compound.flavour.manufacturer.name}}: {{compound.flavour.flavour_name}}" *ngFor="let compound of mix.compound">{{compound.flavour.flavour_name}} - {{compound.percentage}}%
-                    <button class="btn" (click)="openCompoundEditDialog()"><mat-icon>edit</mat-icon></button>
-                    <button class="btn" (click)="remove(compound.id)"><mat-icon>cancel</mat-icon></button>
+                    <button class="mat-icon-button" (click)="remove(compound.id)"><mat-icon>cancel</mat-icon></button>
                   </mat-chip>
                 </mat-chip-list>
               </mat-list-item>
@@ -46,8 +58,8 @@
             <ng-template #elseBlock>No flavours..</ng-template>
     </mat-card-content>
         <mat-card-actions>
-          <button mat-raised-button (click)="goBack()">Back</button>
-          <button mat-raised-button color="primary" (click)="save()">Save</button>
+          <button mat-raised-button (click)="goBack()">Назад</button>
+          <button mat-raised-button color="primary" (click)="save()">Сохранить</button>
     </mat-card-actions>
       </mat-card>
     </div>

@@ -33,6 +33,8 @@ export class MixEditComponent implements OnInit {
 
   bowls: Bowl[];
   selectedBowl: string;
+  rating = [1,2,3,4,5]
+  strength = [1,2,3,4,5,6,7,8,9,10]
 
   ngOnInit(): void {
     this.getMix();
@@ -65,9 +67,12 @@ export class MixEditComponent implements OnInit {
     });
   }
 
-  openCompoundEditDialog() {
-    const dialogRef = this.dialog.open(CompoundDetailComponent);
-    dialogRef.afterClosed().subscribe(result => {
+  openCompoundEditDialog(compound_id) {
+    const dialogRef = this.dialog.open(CompoundDetailComponent, {
+      data: { id: compound_id }
+    });
+    dialogRef.afterClosed().subscribe(
+      result => {
       this.messagesService.add(`Flavour edited`);
     });
   }

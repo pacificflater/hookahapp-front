@@ -1,3 +1,5 @@
-<app-header></app-header>
+<div *ngIf="applicationStateService.getIsMobileResolution();then thenBlock else elseBlock"></div>
+<ng-template #thenBlock><app-header-mobile></app-header-mobile></ng-template>
+<ng-template #elseBlock><app-header></app-header></ng-template>
 <router-outlet></router-outlet>
 

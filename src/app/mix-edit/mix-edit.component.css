@@ -16,7 +16,7 @@ table {
 
 .mix-table {
   max-height: 700px;
-  overflow: auto;
+  /*overflow: auto;*/
 }
 
 a {
@@ -27,3 +27,35 @@ a {
 h2 {
   margin-top: 15px;
 }
+
+form {
+  /*justify-content: center;*/
+  width: 60%;
+}
+
+h4 {
+  margin-bottom: 0;
+}
+
+/*.add-card {*/
+/*  max-width: 900px;*/
+/*  margin: 4em auto;*/
+/*}*/
+
+mat-icon {
+    height:15px !important;
+    width:15px !important;
+    font-size:15px !important;
+    color: #616161;
+    position: sticky;
+}
+
+mat-card-content {
+  justify-content: center;
+  width: 100%;
+}
+
+mat-card {
+  margin-top: 0;
+}
+

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, Router, PreloadAllModules } from '@angular/router';
 import { ManufacturerComponent } from './manufacturer/manufacturer.component';
 import { LoginComponent } from './login/login.component';
 import {FlavourComponent} from './flavour/flavour.component';
@@ -18,9 +18,14 @@ import {CompoundDetailComponent} from './compound-detail/compound-detail.compone
 import {MixDetailComponent} from "./mix-detail/mix-detail.component";
 import {FlavourDetailComponent} from "./flavour-detail/flavour-detail.component";
 import {ManufacturerDetailComponent} from "./manufacturer-detail/manufacturer-detail.component";
+import { HomeComponentMobile } from "./mobile/home/home.component.mobile";
+import { ApplicationStateService } from "./_services/application-state.service";
+import {MixMobileComponent} from "./mobile/mix-mobile/mix-mobile.component";
 
 
-const routes: Routes = [
+
+
+const desktop_routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent},
   { path: 'manufacturers', component: ManufacturerComponent},
@@ -39,11 +44,44 @@ const routes: Routes = [
   { path: 'mix/add', component: MixAddComponent, canActivate: [AuthGuard]},
   { path: 'mix/edit/:id/compound/add', component: CompoundComponent, canActivate: [AuthGuard]},
   { path: 'compound/edit/:id', component: CompoundDetailComponent, canActivate: [AuthGuard]},
+  { path: '**', redirectTo: ''}
+];
+
+const mobile_routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full'},
+  { path: 'home', component: HomeComponentMobile},
+  { path: 'manufacturers', component: ManufacturerComponent},
+  { path: 'flavours', component: FlavourComponent},
+  { path: 'login', component: LoginComponent},
+  { path: 'logout', component: LogoutComponent, canActivate: [AuthGuard]},
+  { path: 'manufacturer/edit/:id', component: ManufacturerEditComponent, canActivate: [AuthGuard]},
+  { path: 'manufacturer/detail/:id', component: ManufacturerDetailComponent},
+  { path: 'flavour/edit/:id', component: FlavourEditComponent, canActivate: [AuthGuard]},
+  { path: 'flavour/detail/:id', component: FlavourDetailComponent},
+  { path: 'mix/edit/:id', component: MixEditComponent, canActivate: [AuthGuard]},
+  { path: 'mix/detail/:id', component: MixDetailComponent},
+  { path: 'mix', component: MixMobileComponent},
+  { path: 'manufacturer/add', component: ManufacturerAddComponent, canActivate: [AuthGuard]},
+  { path: 'flavour/add', component: FlavourAddComponent, canActivate: [AuthGuard]},
+  { path: 'mix/add', component: MixAddComponent, canActivate: [AuthGuard]},
+  { path: 'mix/edit/:id/compound/add', component: CompoundComponent, canActivate: [AuthGuard]},
+  { path: 'compound/edit/:id', component: CompoundDetailComponent, canActivate: [AuthGuard]},
+  { path: '**', redirectTo: ''}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(desktop_routes, {preloadingStrategy: PreloadAllModules})],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+
+export class AppRoutingModule {
+
+  public constructor(private router: Router,
+    private applicationStateService: ApplicationStateService) {
+
+    if (applicationStateService.getIsMobileResolution()) {
+      router.resetConfig(mobile_routes);
+    }
+  }
+}
 
