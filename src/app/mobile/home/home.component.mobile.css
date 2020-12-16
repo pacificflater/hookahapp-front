@@ -1,0 +1,33 @@
+.custom{
+  margin-bottom:10px;
+}
+table {
+  width: 100%;
+}
+
+.btn {
+  color: dimgrey;
+}
+
+.mix-table {
+  max-height: 500px;
+  overflow: auto;
+}
+
+a {
+  color: #3f51b5;
+  text-decoration: none;
+}
+
+h2 {
+  margin-top: 15px;
+}
+
+.mat-column-mix {
+  width: 60%
+}
+
+.mat-column-rating {
+  width: 40%;
+}
+

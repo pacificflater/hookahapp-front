@@ -1,0 +1,12 @@
+mat-toolbar {
+  overflow: hidden;
+    width: 100%;
+}
+
+a {
+  color: #616161;
+  text-decoration-line: none;
+}
+.title a{
+  color: white;
+}
