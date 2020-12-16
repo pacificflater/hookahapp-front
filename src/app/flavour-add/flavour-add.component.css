@@ -1,13 +1,18 @@
 .container {
   margin: 2em auto;
   text-align: center;
-  min-width: 400px;
+  min-width: 300px;
+  min-height: 260px;
 }
 
 .row {
   justify-content: center;
 }
 
-mat-form-field {
-  display: block;
-}
+/*mat-form-field {*/
+/*  display: block;*/
+/*}*/
+
+/*form {*/
+/*  width: 100%*/
+/*}*/
