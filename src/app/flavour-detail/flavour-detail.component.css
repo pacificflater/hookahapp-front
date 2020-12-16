@@ -1,0 +1,12 @@
+.flavour-card {
+  max-width: 900px;
+  margin: 4em auto;
+}
+
+mat-grid-list {
+  text-align: start;
+}
+
+google-chart {
+  margin: auto;
+}

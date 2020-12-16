@@ -1,0 +1,15 @@
+<mat-card class="flavour-card mat-elevation-z8">
+  <mat-card-header class="mat-card-header">
+    <mat-card-title>{{flavour.flavour_name}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div>Производитель: {{flavour.manufacturer.name}}</div>
+    <div *ngIf="flavour.in_stock; else elseBlock">В наличии</div>
+    <ng-template #elseBlock>Нет в наличии</ng-template>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="goBack()">Back</button>
+    <button mat-raised-button color="primary" routerLink="/flavour/edit/{{flavour.id}}">Edit</button>
+  </mat-card-actions>
+
+</mat-card>
