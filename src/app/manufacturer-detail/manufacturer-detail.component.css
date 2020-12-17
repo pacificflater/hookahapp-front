@@ -1,0 +1,22 @@
+.manufacturer-card {
+  max-width: 900px;
+  margin: 4em auto;
+}
+
+mat-grid-list {
+  text-align: start;
+}
+
+.text-left {
+  position: absolute;
+  left: 5px;
+}
+
+.text-right {
+  position: absolute;
+  right: 5px;
+}
+
+h2 {
+  margin-top: 15px;
+}
