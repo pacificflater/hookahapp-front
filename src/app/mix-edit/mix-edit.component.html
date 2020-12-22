@@ -32,16 +32,16 @@
             <h4>Оценка</h4>
             <mat-form-field>
               <mat-label>{{mix.rating}}/5</mat-label>
-              <mat-select [(ngModel)]="mix.rating" aria-labelledby="hello" value="">
-                <mat-option *ngFor="let rating of rating" [value]="rating">{{rating}}/5</mat-option>
+              <mat-select [(ngModel)]="mix.rating" name="rating">
+                <mat-option *ngFor="let rating of ratings" [value]="rating">{{rating}}/5</mat-option>
               </mat-select>
             </mat-form-field>
                 <br>
             <h4>Крепость</h4>
             <mat-form-field class="number">
               <mat-label>{{mix.strength}}/10</mat-label>
-              <mat-select [(ngModel)]="mix.strength">
-                <mat-option *ngFor="let strength of strength" [value]="strength">{{strength}}/10</mat-option>
+              <mat-select [(ngModel)]="mix.strength" name="strength">
+                <mat-option *ngFor="let strength of strengths" [value]="strength">{{strength}}/10</mat-option>
               </mat-select>
             </mat-form-field>
         <br>

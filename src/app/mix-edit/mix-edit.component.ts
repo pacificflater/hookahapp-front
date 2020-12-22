@@ -33,8 +33,8 @@ export class MixEditComponent implements OnInit {
 
   bowls: Bowl[];
   selectedBowl: string;
-  rating = [1,2,3,4,5]
-  strength = [1,2,3,4,5,6,7,8,9,10]
+  ratings = [1,2,3,4,5]
+  strengths = [1,2,3,4,5,6,7,8,9,10]
 
   ngOnInit(): void {
     this.getMix();
