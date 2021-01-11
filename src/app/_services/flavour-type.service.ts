@@ -3,6 +3,7 @@ import {environment} from '../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { FlavourType} from '../_models/flavour-type';
+import {retry} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,8 @@ export class FlavourTypeService {
   private flavourTypeUrl = this.baseUrl + '/api/flavour_types/';
 
   getFlavourTypes(): Observable<FlavourType[]>{
-    return this.http.get<FlavourType[]>(this.flavourTypeUrl);
+    return this.http.get<FlavourType[]>(this.flavourTypeUrl).pipe(
+      retry(3),
+    );
   }
 }

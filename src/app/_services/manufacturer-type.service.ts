@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ManufacturerType} from '../_models/manufacturer-type';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
+import {retry} from "rxjs/operators";
 
 
 @Injectable({
@@ -21,7 +22,9 @@ export class ManufacturerTypeService {
   private manufacturerTypeUrl = this.baseUrl + '/api/manufacturer_type/';
 
   getManufacturerType(): Observable<ManufacturerType[]>{
-    return this.http.get<ManufacturerType[]>(this.manufacturerTypeUrl);
+    return this.http.get<ManufacturerType[]>(this.manufacturerTypeUrl).pipe(
+      retry(3),
+    );
   }
 
 }

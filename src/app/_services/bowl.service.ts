@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Bowl } from '../_models/bowl';
 import {environment} from '../../environments/environment';
+import { retry } from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,8 @@ export class BowlService {
   private bowlUrl = this.baseUrl + '/api/bowls/';
 
   getBowls(): Observable<Bowl[]>{
-    return this.http.get<Bowl[]>(this.bowlUrl);
+    return this.http.get<Bowl[]>(this.bowlUrl).pipe(
+      retry(3),
+    )
   }
 }
