@@ -10,7 +10,7 @@ export class HeaderMobileComponent implements OnInit {
 
   constructor(public userService: UserService) { }
 
-  title = 'Hoohah App';
+  title = 'Hookah App';
 
   ngOnInit(): void {
     this.userService.isLoggedIn();

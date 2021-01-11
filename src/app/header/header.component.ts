@@ -8,7 +8,7 @@ import { UserService } from '../_services/user.service';
 })
 export class HeaderComponent implements OnInit {
 
-  title = 'Hoohah App';
+  title = 'Hookah App';
 
   constructor(
     public userService: UserService
