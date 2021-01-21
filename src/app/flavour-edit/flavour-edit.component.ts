@@ -43,6 +43,7 @@ export class FlavourEditComponent implements OnInit {
   }
 
   save(): void {
+    console.log("component" + this.flavour.description)
     this.flavour.flavour_type.map(({id}) => id);
     this.flavourServuce.updateFlavour(this.flavour)
       .subscribe(() => this.goBack());

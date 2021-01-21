@@ -26,7 +26,13 @@
           </mat-select>
         </mat-form-field>
       </div>
+      <div class="row">
+        <mat-form-field appearance="fill">
+          <mat-label>Описание</mat-label>
+          <textarea matInput #description></textarea>
+        </mat-form-field>
+      </div>
     </form>
-    <button mat-raised-button color="primary" (click)="addFlavour(flavour_name.value, checked, selectedManufacturer, selectedOptions ); flavour_name.value=''" [mat-dialog-close]="flavour_name.value">Сохранить</button>
+    <button mat-raised-button color="primary" (click)="addFlavour(flavour_name.value, checked, selectedManufacturer, selectedOptions, description.value ); flavour_name.value=''" [mat-dialog-close]="flavour_name.value">Сохранить</button>
 </div>
 

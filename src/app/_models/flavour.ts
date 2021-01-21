@@ -7,6 +7,7 @@ export interface Flavour {
   flavour_type: [{id: number, type: string}];
   manufacturer: {id: number, name: string};
   add_time: string;
+  description: string;
 }
 
 export interface NewFlavour {
@@ -15,6 +16,7 @@ export interface NewFlavour {
   in_stock: boolean;
   manufacturer: number;
   add_time: string;
+  description: string;
 }
 
 export interface UpdateFlavour {
@@ -23,4 +25,5 @@ export interface UpdateFlavour {
   in_stock: boolean;
   manufacturer: number;
   add_time: string;
+  description: string;
 }

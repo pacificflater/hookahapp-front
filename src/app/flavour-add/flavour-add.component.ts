@@ -41,7 +41,7 @@ export class FlavourAddComponent implements OnInit {
   }
 
   // tslint:disable-next-line:variable-name
-  addFlavour(flavour_name: string, in_stock: boolean, manufacturer: number, flavour_type: number[]): void {
+  addFlavour(flavour_name: string, in_stock: boolean, manufacturer: number, flavour_type: number[], description: string): void {
     const today = new Date();
     const dd = String(today.getDate()).padStart(2, '0');
     const mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
@@ -50,7 +50,7 @@ export class FlavourAddComponent implements OnInit {
     const add_time = yyyy + '-' + mm + '-' + dd;
     flavour_name = flavour_name.trim();
     if (!flavour_name) { return; }
-    this.flavourService.addFlavour({ flavour_name, flavour_type, in_stock, manufacturer, add_time } as NewFlavour)
+    this.flavourService.addFlavour({ flavour_name, flavour_type, in_stock, manufacturer, add_time,  description} as NewFlavour)
     .subscribe(flavour => {
       this.newFlavour.push(flavour);
     });

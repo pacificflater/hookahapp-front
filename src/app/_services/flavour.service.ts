@@ -41,7 +41,7 @@ export class FlavourService {
   }
 
   addFlavour(flavour: NewFlavour): Observable<NewFlavour> {
-    const body = {flavour_name: flavour.flavour_name, flavour_type: flavour.flavour_type, manufacturer: flavour.manufacturer, in_stock: flavour.in_stock, add_time: flavour.add_time};
+    const body = {flavour_name: flavour.flavour_name, flavour_type: flavour.flavour_type, manufacturer: flavour.manufacturer, in_stock: flavour.in_stock, add_time: flavour.add_time, description: flavour.description};
     return this.http.post<NewFlavour>(this.flavoursUrl, body).pipe(
       retry(3),
     );
@@ -55,13 +55,14 @@ export class FlavourService {
   }
 
   updateFlavour(flavour: Flavour): Observable<any> {
+    console.log("service" + flavour.description)
     if (flavour.flavour_type.some(value => typeof value == 'object')){
-      const body = {flavour_name: flavour.flavour_name, flavour_type: flavour.flavour_type.map(({id}) => id), manufacturer: flavour.manufacturer.id, in_stock: flavour.in_stock, add_time: flavour.add_time};
+      const body = {flavour_name: flavour.flavour_name, flavour_type: flavour.flavour_type.map(({id}) => id), manufacturer: flavour.manufacturer.id, in_stock: flavour.in_stock, add_time: flavour.add_time, description: flavour.description};
       return this.http.put(this.flavoursUrl + `${flavour.id}/`, body, this.httpOptions).pipe(
       retry(3),
     );
     }else{
-      const body = {flavour_name: flavour.flavour_name, flavour_type: flavour.flavour_type, manufacturer: flavour.manufacturer.id, in_stock: flavour.in_stock, add_time: flavour.add_time};
+      const body = {flavour_name: flavour.flavour_name, flavour_type: flavour.flavour_type, manufacturer: flavour.manufacturer.id, in_stock: flavour.in_stock, add_time: flavour.add_time, description: flavour.description};
       return this.http.put(this.flavoursUrl + `${flavour.id}/`, body, this.httpOptions).pipe(
       retry(3),
     );

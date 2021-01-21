@@ -3,13 +3,28 @@
     <mat-card-title>{{flavour.flavour_name}}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <div>Производитель: {{flavour.manufacturer.name}}</div>
-    <div *ngIf="flavour.in_stock; else elseBlock">В наличии</div>
-    <ng-template #elseBlock>Нет в наличии</ng-template>
+    <mat-grid-list cols="2" rowHeight="40px">
+      <mat-grid-tile colspan="1" rowspan="1"><div class="text-left">Производитель</div></mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1"><div class="text-right">{{flavour.manufacturer.name}}</div></mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1"><div class="text-left">В наличии</div></mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1"><div class="text-right">
+        <div *ngIf="flavour.in_stock; else elseBlock">Да</div>
+    <ng-template #elseBlock>Нет</ng-template></div></mat-grid-tile>
+      <mat-grid-tile colspan="2" rowspan="4">
+        <div class="text-left description">
+          <label>Описание</label>
+          <div *ngIf="flavour.description; else elseBlock2">
+            {{flavour.description}}
+          </div>
+          <ng-template #elseBlock2><div>Описание отсутствует</div></ng-template>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button (click)="goBack()">Back</button>
-    <button mat-raised-button color="primary" routerLink="/flavour/edit/{{flavour.id}}">Edit</button>
+    <button mat-raised-button (click)="goBack()">Назад</button>
+    <button mat-raised-button color="primary" routerLink="/flavour/edit/{{flavour.id}}">Изменить</button>
   </mat-card-actions>
 
 </mat-card>
