@@ -71,7 +71,7 @@ export class MixService {
   }
 
   updateMix(mix: Mix): Observable<any> {
-    const body = {mix_name: mix.mix_name, bowl: mix.bowl.id, rating: mix.rating, strength: mix.strength, compound: mix.compound};
+    const body = {mix_name: mix.mix_name, bowl: mix.bowl.id, rating: mix.rating, strength: mix.strength, compound: mix.compound, description: mix.description};
     return this.http.put(this.mixesUrl + `${mix.id}/`, body, this.httpOptions).pipe(
       retry(3),
     );

@@ -1,5 +1,3 @@
-import {Manufacturer} from './manufacturer';
-
 export interface Flavour {
   id: number;
   flavour_name: string;

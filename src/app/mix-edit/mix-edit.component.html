@@ -45,6 +45,10 @@
               </mat-select>
             </mat-form-field>
         <br>
+            <mat-form-field appearance="fill">
+              <mat-label>Описание</mat-label>
+              <textarea matInput placeholder="name" [(ngModel)]="mix.description" name="description"></textarea>
+            </mat-form-field>
       </form>
             <div *ngIf="mix.compound.length > 0; else elseBlock">
               <mat-list-item >

@@ -31,10 +31,10 @@ export class MixAddComponent implements OnInit {
 
 
   // tslint:disable-next-line:variable-name
-  addMix(mix_name: string, rating: number, strength: number, bowl: number): void {
+  addMix(mix_name: string, rating: number, strength: number, bowl: number, description: string): void {
     mix_name = mix_name.trim();
     if (!mix_name) { return; }
-    this.mixService.addMixes({mix_name, rating, strength, bowl} as NewMix)
+    this.mixService.addMixes({mix_name, rating, strength, bowl, description} as NewMix)
     .subscribe(mix => {
       this.mixes.push(mix);
     });

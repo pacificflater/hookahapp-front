@@ -9,6 +9,7 @@ export interface Mix {
     percentage: number;
     flavour: {id: number, flavour_name: string, in_stock: boolean}
   }];
+  description: string;
 }
 
 export interface NewMix {
@@ -16,4 +17,5 @@ export interface NewMix {
   rating: number;
   strength: number;
   bowl: number;
+  description: string;
 }

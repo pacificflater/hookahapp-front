@@ -19,8 +19,12 @@
           <mat-label>Оценка</mat-label>
           <ngb-rating [(rate)]="rating" max="5" ></ngb-rating>
     <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Описание</mat-label>
+          <textarea matInput #description></textarea>
+        </mat-form-field>
 
       </form>
-  <button mat-raised-button color="primary" (click)="addMix(mixName.value,rating, strength, selectedBowl); mixName.value=''" [mat-dialog-close]="mixName.value">Сохранить</button>
+  <button mat-raised-button color="primary" (click)="addMix(mixName.value,rating, strength, selectedBowl, description.value); mixName.value=''" [mat-dialog-close]="mixName.value">Сохранить</button>
 </div>
 
