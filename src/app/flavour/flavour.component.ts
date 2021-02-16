@@ -10,7 +10,7 @@ import { Subscription} from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import {MatSort} from '@angular/material/sort';
-import {MixesItem} from '../mix/mix-datasource';
+import {MixesItem} from '../desktop/mix/mix-datasource';
 
 
 

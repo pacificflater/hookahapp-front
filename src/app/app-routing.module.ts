@@ -8,7 +8,7 @@ import {HomeComponent} from './home/home.component';
 import { ManufacturerEditComponent} from './manufacturer-edit/manufacturer-edit.component';
 import {FlavourEditComponent} from './flavour-edit/flavour-edit.component';
 import { AuthGuard} from './helpers/auth.guard';
-import {MixComponent} from './mix/mix.component';
+import {MixComponent} from './desktop/mix/mix.component';
 import {ManufacturerAddComponent} from './manufacturer-add/manufacturer-add.component';
 import { FlavourAddComponent } from './flavour-add/flavour-add.component';
 import {MixEditComponent} from './mix-edit/mix-edit.component';

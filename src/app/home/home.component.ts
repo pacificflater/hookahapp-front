@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatTable, MatTableDataSource} from '@angular/material/table';
-import {MixesItem} from '../mix/mix-datasource';
+import {MixesItem} from '../desktop/mix/mix-datasource';
 import {MixService} from '../_services/mix.service';
 import {MatDialog} from '@angular/material/dialog';
 import {MessagesService} from '../_services/messages.service';

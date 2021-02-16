@@ -6,7 +6,7 @@ import { ManufacturerAddComponent} from '../manufacturer-add/manufacturer-add.co
 import { MatDialog} from '@angular/material/dialog';
 import {MatTable, MatTableDataSource} from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
-import {MixesItem} from '../mix/mix-datasource';
+import {MixesItem} from '../desktop/mix/mix-datasource';
 
 
 @Component({

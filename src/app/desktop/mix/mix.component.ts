@@ -2,12 +2,12 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { MixesItem } from './mix-datasource';
-import { MixService } from '../_services/mix.service';
-import { Mix } from '../_models/mix';
-import { MixAddComponent } from '../mix-add/mix-add.component';
+import { MixService } from '../../_services/mix.service';
+import { Mix } from '../../_models/mix';
+import { MixAddComponent } from '../../mix-add/mix-add.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { MessagesService } from '../_services/messages.service';
+import { MessagesService } from '../../_services/messages.service';
 
 @Component({
   selector: 'app-mixes',
