@@ -61,6 +61,9 @@ import {ApplicationStateService} from "./_services/application-state.service";
 import { HeaderMobileComponent } from './mobile/header-mobile/header-mobile.component';
 import {MatMenuModule} from "@angular/material/menu";
 import { MixMobileComponent } from './mobile/mix-mobile/mix-mobile.component';
+import { ManufacturerDesktopComponent} from "./desktop/manufacturer-desktop/manufacturer-desktop.component";
+import { FlavourDesktopComponent } from "./desktop/flavour-desktop/flavour-desktop.component";
+import { MixDetailDesctopComponent } from "./desktop/mix-detail/mix-detail.component";
 
 @NgModule({
   declarations: [
@@ -87,7 +90,10 @@ import { MixMobileComponent } from './mobile/mix-mobile/mix-mobile.component';
     MixDetailComponent,
     HomeComponentMobile,
     HeaderMobileComponent,
-    MixMobileComponent
+    MixMobileComponent,
+    ManufacturerDesktopComponent,
+    FlavourDesktopComponent,
+    MixDetailDesctopComponent
   ],
 
   imports: [

@@ -21,15 +21,16 @@ import {ManufacturerDetailComponent} from "./manufacturer-detail/manufacturer-de
 import { HomeComponentMobile } from "./mobile/home/home.component.mobile";
 import { ApplicationStateService } from "./_services/application-state.service";
 import {MixMobileComponent} from "./mobile/mix-mobile/mix-mobile.component";
-
-
+import { ManufacturerDesktopComponent } from "./desktop/manufacturer-desktop/manufacturer-desktop.component";
+import {FlavourDesktopComponent} from "./desktop/flavour-desktop/flavour-desktop.component";
+import {MixDetailDesctopComponent} from "./desktop/mix-detail/mix-detail.component";
 
 
 const desktop_routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent},
-  { path: 'manufacturers', component: ManufacturerComponent},
-  { path: 'flavours', component: FlavourComponent},
+  { path: 'manufacturers', component: ManufacturerDesktopComponent},
+  { path: 'flavours', component: FlavourDesktopComponent},
   { path: 'login', component: LoginComponent},
   { path: 'logout', component: LogoutComponent, canActivate: [AuthGuard]},
   { path: 'manufacturer/edit/:id', component: ManufacturerEditComponent, canActivate: [AuthGuard]},
@@ -37,7 +38,7 @@ const desktop_routes: Routes = [
   { path: 'flavour/edit/:id', component: FlavourEditComponent, canActivate: [AuthGuard]},
   { path: 'flavour/detail/:id', component: FlavourDetailComponent},
   { path: 'mix/edit/:id', component: MixEditComponent, canActivate: [AuthGuard]},
-  { path: 'mix/detail/:id', component: MixDetailComponent},
+  { path: 'mix/detail/:id', component: MixDetailDesctopComponent},
   { path: 'mix', component: MixComponent},
   { path: 'manufacturer/add', component: ManufacturerAddComponent, canActivate: [AuthGuard]},
   { path: 'flavour/add', component: FlavourAddComponent, canActivate: [AuthGuard]},
