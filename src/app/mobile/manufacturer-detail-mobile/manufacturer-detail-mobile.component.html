@@ -1,0 +1,70 @@
+<!--<div class="container">-->
+<!--  <div class="row">-->
+<!--    <div class="col-lg mix-name"><h2>{{manufacturer.name}}</h2></div>-->
+<!--  </div>-->
+<!--  <div class="row">-->
+<!--    <mat-card class="col-lg manufacturer-card mat-elevation-z8">-->
+<!--      <mat-card-content>-->
+<!--        <mat-grid-list cols="2" rowHeight="40px">-->
+<!--          <mat-grid-tile colspan="1"><div class="text-left">Тип</div></mat-grid-tile>-->
+<!--          <mat-grid-tile colspan="1"><div class="text-right">{{manufacturer.type.type}}</div></mat-grid-tile>-->
+<!--        </mat-grid-list>-->
+<!--      <mat-accordion displayMode="flat" multi>-->
+<!--              <mat-expansion-panel>-->
+<!--                <mat-expansion-panel-header>-->
+<!--                  <mat-panel-title>Ароматы</mat-panel-title>-->
+<!--                </mat-expansion-panel-header>-->
+<!--                <div *ngFor="let flavour of manufacturer.flavour">-->
+<!--                  <mat-grid-list cols="2" rowHeight="20">-->
+<!--                    <mat-grid-tile><a class="text-left" routerLink="/flavour/detail/{{flavour.id}}">{{flavour.flavour_name}}</a></mat-grid-tile>-->
+<!--                    <mat-grid-tile><div *ngIf="flavour.in_stock; then thenBlock;else elseBlock"></div></mat-grid-tile>-->
+<!--                    <ng-template #thenBlock><div class="text-left">В наличии</div></ng-template>-->
+<!--                    <ng-template #elseBlock><div class="text-left">Отсутствует</div></ng-template>-->
+<!--                  </mat-grid-list>-->
+<!--                </div>-->
+<!--              </mat-expansion-panel>-->
+<!--            </mat-accordion>-->
+<!--      </mat-card-content>-->
+<!--      <mat-card-actions>-->
+<!--        <button mat-raised-button (click)="goBack()">Назад</button>-->
+<!--        <button mat-raised-button color="primary" routerLink="/manufacturer/edit/{{manufacturer.id}}">Изменить</button>-->
+<!--      </mat-card-actions>-->
+<!--    </mat-card>-->
+<!--  </div>-->
+<!--</div>-->
+<div class="container">
+  <mat-card class="manufacturer-card mat-elevation-z8">
+    <mat-card-title>{{manufacturer.name}}</mat-card-title>
+
+  <mat-card-content>
+    <mat-grid-list cols="2" rowHeight="40px">
+      <mat-grid-tile colspan="1" rowspan="1"><div class="manufacturer-properties">Тип</div></mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1"><div class="manufacturer-properties">{{manufacturer.type.type}}</div></mat-grid-tile>
+    </mat-grid-list>
+    <div class="flavours">
+      <div *ngIf="manufacturer.flavour.length > 0; else elseBlock2">
+          <mat-accordion displayMode="flat" multi>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>Ароматы</mat-panel-title>
+                </mat-expansion-panel-header>
+                <div *ngFor="let flavour of manufacturer.flavour">
+                  <mat-grid-list cols="2" rowHeight="40">
+                    <mat-grid-tile><a class="text-left" routerLink="/flavour/detail/{{flavour.id}}">{{flavour.flavour_name}}</a></mat-grid-tile>
+                    <mat-grid-tile><div *ngIf="flavour.in_stock; then thenBlock;else elseBlock"></div></mat-grid-tile>
+                    <ng-template #thenBlock><div class="text-left">В наличии</div></ng-template>
+                    <ng-template #elseBlock><div class="text-left">Отсутствует</div></ng-template>
+                  </mat-grid-list>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+      </div>
+      <ng-template #elseBlock2><div>Ароматы отсутствуют..</div></ng-template>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="goBack()">Назад</button>
+    <button mat-raised-button color="primary" routerLink="/manufacturer/edit/{{manufacturer.id}}">Изменить</button>
+  </mat-card-actions>
+      </mat-card>
+</div>

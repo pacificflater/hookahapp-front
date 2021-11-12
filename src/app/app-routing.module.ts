@@ -25,6 +25,7 @@ import { ManufacturerDesktopComponent } from "./desktop/manufacturer-desktop/man
 import {FlavourDesktopComponent} from "./desktop/flavour-desktop/flavour-desktop.component";
 import {MixDetailDesctopComponent} from "./desktop/mix-detail/mix-detail.component";
 import { FlavourDetailMobileComponent } from "./mobile/flavour-detail-mobile/flavour-detail-mobile.component";
+import {ManufacturerDetailMobileComponent} from "./mobile/manufacturer-detail-mobile/manufacturer-detail-mobile.component";
 
 
 const desktop_routes: Routes = [
@@ -57,7 +58,7 @@ const mobile_routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'logout', component: LogoutComponent, canActivate: [AuthGuard]},
   { path: 'manufacturer/edit/:id', component: ManufacturerEditComponent, canActivate: [AuthGuard]},
-  { path: 'manufacturer/detail/:id', component: ManufacturerDetailComponent},
+  { path: 'manufacturer/detail/:id', component: ManufacturerDetailMobileComponent},
   { path: 'flavour/edit/:id', component: FlavourEditComponent, canActivate: [AuthGuard]},
   { path: 'flavour/detail/:id', component: FlavourDetailMobileComponent},
   { path: 'mix/edit/:id', component: MixEditComponent, canActivate: [AuthGuard]},
