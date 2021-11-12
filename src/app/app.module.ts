@@ -64,6 +64,7 @@ import { MixMobileComponent } from './mobile/mix-mobile/mix-mobile.component';
 import { ManufacturerDesktopComponent} from "./desktop/manufacturer-desktop/manufacturer-desktop.component";
 import { FlavourDesktopComponent } from "./desktop/flavour-desktop/flavour-desktop.component";
 import { MixDetailDesctopComponent } from "./desktop/mix-detail/mix-detail.component";
+import { FlavourDetailMobileComponent } from "./mobile/flavour-detail-mobile/flavour-detail-mobile.component"
 
 @NgModule({
   declarations: [
@@ -93,7 +94,8 @@ import { MixDetailDesctopComponent } from "./desktop/mix-detail/mix-detail.compo
     MixMobileComponent,
     ManufacturerDesktopComponent,
     FlavourDesktopComponent,
-    MixDetailDesctopComponent
+    MixDetailDesctopComponent,
+    FlavourDetailMobileComponent
   ],
 
   imports: [

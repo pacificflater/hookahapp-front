@@ -1,0 +1,49 @@
+<div class="container">
+  <mat-card class="flavour-card mat-elevation-z8">
+    <mat-card-title>{{flavour.flavour_name}}</mat-card-title>
+  <mat-card-content>
+    <mat-grid-list cols="2" rowHeight="40px">
+      <mat-grid-tile colspan="1" rowspan="1"><div class="text-left">Производитель</div></mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1"><div class="text-left">{{flavour.manufacturer.name}}</div></mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1"><div class="text-left">В наличии</div></mat-grid-tile>
+      <mat-grid-tile colspan="1" rowspan="1"><div class="text-left">
+        <div *ngIf="flavour.in_stock; else elseBlock">Да</div>
+    <ng-template #elseBlock>Нет</ng-template></div></mat-grid-tile>
+    </mat-grid-list>
+    <div class="flavour-description">
+          <label>Описание</label>
+          <div *ngIf="flavour.description; else elseBlock2">
+            {{flavour.description}}
+          </div>
+          <ng-template #elseBlock2><div>Описание отсутствует</div></ng-template>
+        </div>
+    <label>Миксы с {{flavour.flavour_name}}</label>
+    <div class="mixes">
+      <div *ngIf="mixes.length > 0; else elseBlock4">
+        <mat-accordion multi>
+      <mat-expansion-panel *ngFor="let mix of mixes">
+        <mat-expansion-panel-header>
+          <a routerLink="/mix/detail/{{mix.id}}">{{mix.mix_name}}</a>
+        </mat-expansion-panel-header>
+        <ul *ngFor="let compound of mix.compound">
+          <li>{{compound.flavour.manufacturer.name}}: {{compound.flavour.flavour_name}} - {{compound.percentage}}%</li>
+        </ul>
+        <div class="mix-description">
+          <label>Описание</label>
+          <div *ngIf="mix.description; else elseBlock3">
+          {{mix.description}}
+          </div>
+        <ng-template #elseBlock3><div>Описание отсутствует</div></ng-template>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+      </div>
+      <ng-template #elseBlock4><div class="no-mixes">Миксы c {{flavour.flavour_name}} отсутствуют..</div></ng-template>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="goBack()">Назад</button>
+    <button mat-raised-button color="primary" routerLink="/flavour/edit/{{flavour.id}}">Изменить</button>
+  </mat-card-actions>
+</mat-card>
+</div>

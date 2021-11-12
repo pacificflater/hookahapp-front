@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Flavour, NewFlavour, UpdateFlavour} from '../_models/flavour';
+import { Mix } from '../_models/mix';
 import { Observable, of } from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
@@ -19,6 +20,7 @@ export class FlavourService {
   };
 
   private flavoursUrl = this.baseUrl + '/api/flavour/';
+  private mixesUrl = this.baseUrl + '/api/mix/';
   constructor(private http: HttpClient,
               ) {}
 
@@ -54,6 +56,12 @@ export class FlavourService {
     );
   }
 
+  getMixes(flavour: Flavour | number): Observable<Mix[]>{
+    const id = typeof flavour === 'number' ? flavour : flavour.id;
+      return this.http.get<Mix[]>(this.mixesUrl + `?compound=${id}`).pipe(
+      retry(3),
+    );
+  }
   updateFlavour(flavour: Flavour): Observable<any> {
     console.log("service" + flavour.description)
     if (flavour.flavour_type.some(value => typeof value == 'object')){
@@ -67,6 +75,7 @@ export class FlavourService {
       retry(3),
     );
     }
+
   }
 
 

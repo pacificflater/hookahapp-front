@@ -7,7 +7,7 @@ export interface Mix {
   compound: [{
     id: number,
     percentage: number;
-    flavour: {id: number, flavour_name: string, in_stock: boolean}
+    flavour: {id: number, flavour_name: string, in_stock: boolean, manufacturer: {name: string, id: number}}
   }];
   description: string;
 }
