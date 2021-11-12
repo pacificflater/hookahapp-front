@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {MixService} from "../_services/mix.service";
+import {MixService} from "../../_services/mix.service";
 import {ActivatedRoute} from "@angular/router";
-import {Mix} from "../_models/mix";
+import {Mix} from "../../_models/mix";
 import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-mix-detail',
-  templateUrl: './mix-detail.component.html',
-  styleUrls: ['./mix-detail.component.css']
+  templateUrl: './mix-detail-mobile.component.html',
+  styleUrls: ['./mix-detail-mobile.component.css']
 })
-export class MixDetailComponent implements OnInit {
+export class MixDetailMobileComponent implements OnInit {
 
   constructor(
     private mixService: MixService,
@@ -23,11 +23,24 @@ export class MixDetailComponent implements OnInit {
   flavourNameArray: Array<any>;
   type = 'PieChart';
   options = {
+      fontSize:12,
+      fontName: 'Roboto',
       pieHole:0.4,
+      height: 300,
       chartArea: {
           top: 40,
+          left: 5,
+          width: '100%'
       },
-      legend: 'right',
+      legend: {
+        position: 'right',
+        alignment: 'center',
+        textStyle: {
+          fontSize: 12,
+          fontName: 'Roboto'
+        }
+      },
+
    };
 
   ngOnInit(): void {

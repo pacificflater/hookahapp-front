@@ -53,7 +53,7 @@ import { HeaderComponent } from './desktop/header/header.component';
 import {BarRatingModule} from 'ngx-bar-rating';
 import { ManufacturerDetailComponent } from './manufacturer-detail/manufacturer-detail.component';
 import { FlavourDetailComponent } from './flavour-detail/flavour-detail.component';
-import { MixDetailComponent } from './mix-detail/mix-detail.component';
+import { MixDetailMobileComponent } from './mobile/mix-detail-mobile/mix-detail-mobile.component';
 import {MDBBootstrapModule} from "angular-bootstrap-md";
 import {GoogleChartsModule} from "angular-google-charts";
 import {HomeComponentMobile} from "./mobile/home/home.component.mobile";
@@ -89,7 +89,7 @@ import {ManufacturerDetailMobileComponent} from "./mobile/manufacturer-detail-mo
     HeaderComponent,
     ManufacturerDetailComponent,
     FlavourDetailComponent,
-    MixDetailComponent,
+    MixDetailMobileComponent,
     HomeComponentMobile,
     HeaderMobileComponent,
     MixMobileComponent,

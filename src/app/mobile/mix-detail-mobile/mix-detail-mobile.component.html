@@ -1,10 +1,6 @@
 <div class="container">
-  <div class="row">
-    <div class="col-lg mix-name"><h2>{{mix.mix_name}}</h2></div>
-  </div>
-  <div class="row">
-    <div class="col-lg">
-      <mat-card class="mix-card mat-elevation-z8">
+  <mat-card class="mix-detail-card mat-elevation-z8">
+    <mat-card-title>{{mix.mix_name}}</mat-card-title>
   <mat-card-content>
     <mat-grid-list cols="2" rowHeight="40px">
       <mat-grid-tile><div class="text-left">Чаша</div></mat-grid-tile>
@@ -13,32 +9,25 @@
       <mat-grid-tile><div class="text-right">{{mix.rating}}/5</div></mat-grid-tile>
       <mat-grid-tile><div class="text-left">Крепость</div></mat-grid-tile>
       <mat-grid-tile><div class="text-right">{{mix.strength}}/10</div></mat-grid-tile>
-      <mat-grid-tile colspan="2" rowspan="4">
-        <div class="chart">
+    </mat-grid-list>
+    <div class="chart">
           <google-chart
                [type]="type"
                [data]="percentageArray"
                [options]="options">
           </google-chart>
         </div>
-      </mat-grid-tile>
-      <mat-grid-tile colspan="2" rowspan="4">
-        <div class="text-left description">
+    <div class="description">
           <label>Описание</label>
           <div *ngIf="mix.description; else elseBlock2">
             {{mix.description}}
           </div>
           <ng-template #elseBlock2><div>Описание отсутствует</div></ng-template>
         </div>
-      </mat-grid-tile>
-    </mat-grid-list>
-      </mat-card-content>
+  </mat-card-content>
   <mat-card-actions>
     <button mat-raised-button (click)="goBack()">Назад</button>
     <button mat-raised-button color="primary" routerLink="/mix/edit/{{mix.id}}">Изменить</button>
   </mat-card-actions>
-</mat-card>
-    </div>
-  </div>
-
+    </mat-card>
 </div>

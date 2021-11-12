@@ -15,7 +15,7 @@ import {MixEditComponent} from './mix-edit/mix-edit.component';
 import {MixAddComponent} from './mix-add/mix-add.component';
 import {CompoundComponent} from './compound/compound.component';
 import {CompoundDetailComponent} from './compound-detail/compound-detail.component';
-import {MixDetailComponent} from "./mix-detail/mix-detail.component";
+import {MixDetailMobileComponent} from "./mobile/mix-detail-mobile/mix-detail-mobile.component";
 import {FlavourDetailComponent} from "./flavour-detail/flavour-detail.component";
 import {ManufacturerDetailComponent} from "./manufacturer-detail/manufacturer-detail.component";
 import { HomeComponentMobile } from "./mobile/home/home.component.mobile";
@@ -62,7 +62,7 @@ const mobile_routes: Routes = [
   { path: 'flavour/edit/:id', component: FlavourEditComponent, canActivate: [AuthGuard]},
   { path: 'flavour/detail/:id', component: FlavourDetailMobileComponent},
   { path: 'mix/edit/:id', component: MixEditComponent, canActivate: [AuthGuard]},
-  { path: 'mix/detail/:id', component: MixDetailComponent},
+  { path: 'mix/detail/:id', component: MixDetailMobileComponent},
   { path: 'mix', component: MixMobileComponent},
   { path: 'manufacturer/add', component: ManufacturerAddComponent, canActivate: [AuthGuard]},
   { path: 'flavour/add', component: FlavourAddComponent, canActivate: [AuthGuard]},

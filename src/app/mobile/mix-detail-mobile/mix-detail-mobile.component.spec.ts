@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MixDetailComponent } from './mix-detail.component';
+import { MixDetailMobileComponent } from './mix-detail-mobile.component';
 
 describe('MixDetailComponent', () => {
-  let component: MixDetailComponent;
-  let fixture: ComponentFixture<MixDetailComponent>;
+  let component: MixDetailMobileComponent;
+  let fixture: ComponentFixture<MixDetailMobileComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MixDetailComponent ]
+      declarations: [ MixDetailMobileComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MixDetailComponent);
+    fixture = TestBed.createComponent(MixDetailMobileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
