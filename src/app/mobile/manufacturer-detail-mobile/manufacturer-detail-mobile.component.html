@@ -52,8 +52,8 @@
                   <mat-grid-list cols="2" rowHeight="40">
                     <mat-grid-tile><a class="text-left" routerLink="/flavour/detail/{{flavour.id}}">{{flavour.flavour_name}}</a></mat-grid-tile>
                     <mat-grid-tile><div *ngIf="flavour.in_stock; then thenBlock;else elseBlock"></div></mat-grid-tile>
-                    <ng-template #thenBlock><div class="text-left">В наличии</div></ng-template>
-                    <ng-template #elseBlock><div class="text-left">Отсутствует</div></ng-template>
+                    <ng-template #thenBlock><div class="text-left" style="color: forestgreen">В наличии</div></ng-template>
+                    <ng-template #elseBlock><div class="text-left" style="color: firebrick ">Отсутствует</div></ng-template>
                   </mat-grid-list>
                 </div>
               </mat-expansion-panel>
