@@ -8,6 +8,7 @@ import { MixAddComponent } from '../../mix-add/mix-add.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { MessagesService } from '../../_services/messages.service';
+import {UserService} from "../../_services/user.service";
 
 @Component({
   selector: 'app-mixes',
@@ -29,7 +30,8 @@ export class MixComponent implements AfterViewInit, OnInit {
 
   constructor( public mixService: MixService,
                public dialog: MatDialog,
-               public messagesService: MessagesService) { }
+               public messagesService: MessagesService,
+               public userService: UserService) { }
 
   getMixesList(): void {
     this.mixService.getMixes().subscribe(res => {

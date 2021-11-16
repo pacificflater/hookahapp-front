@@ -4,6 +4,7 @@ import { Mix} from '../../_models/mix';
 import {Flavour} from "../../_models/flavour";
 import {Location} from "@angular/common";
 import {ActivatedRoute, Router} from "@angular/router";
+import {UserService} from "../../_services/user.service";
 
 @Component({
   selector: 'app-flavour-detail',
@@ -15,6 +16,7 @@ export class FlavourDetailMobileComponent implements OnInit {
   constructor(private flavourService: FlavourService,
               private route: ActivatedRoute,
               private router: Router,
+              public userService: UserService,
               private location: Location) { }
 
   ngOnInit(): void {

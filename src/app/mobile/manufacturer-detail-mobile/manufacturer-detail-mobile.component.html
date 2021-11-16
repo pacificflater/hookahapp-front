@@ -64,7 +64,8 @@
   </mat-card-content>
   <mat-card-actions>
     <button mat-raised-button (click)="goBack()">Назад</button>
-    <button mat-raised-button color="primary" routerLink="/manufacturer/edit/{{manufacturer.id}}">Изменить</button>
+    <span *ngIf="userService.isLoggedIn();else elseBlock3"><button mat-raised-button color="primary" routerLink="/manufacturer/edit/{{manufacturer.id}}">Изменить</button></span>
+    <ng-template #elseBlock3><button mat-raised-button disabled routerLink="/manufacturer/edit/{{manufacturer.id}}">Изменить</button></ng-template>
   </mat-card-actions>
       </mat-card>
 </div>

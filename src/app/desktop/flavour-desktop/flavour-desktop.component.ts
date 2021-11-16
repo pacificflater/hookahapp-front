@@ -9,6 +9,7 @@ import {MatTable, MatTableDataSource} from '@angular/material/table';
 import 'rxjs/add/operator/filter';
 import {MatSort} from '@angular/material/sort';
 import {MixesItem} from '../mix/mix-datasource';
+import {UserService} from "../../_services/user.service";
 
 
 
@@ -23,6 +24,7 @@ export class FlavourDesktopComponent implements OnInit {
   constructor(private flavourService: FlavourService,
               private messagesService: MessagesService,
               public dialog: MatDialog,
+              public userService: UserService
   ) { }
 
   flavours: Flavour[];

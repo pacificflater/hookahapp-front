@@ -3,6 +3,7 @@ import {ManufacturerService} from "../_services/manufacturer.service";
 import {ActivatedRoute} from "@angular/router";
 import {Manufacturer} from "../_models/manufacturer";
 import {Location} from "@angular/common";
+import {UserService} from "../_services/user.service";
 
 @Component({
   selector: 'app-manufacturer-detail',
@@ -15,7 +16,8 @@ export class ManufacturerDetailComponent implements OnInit {
 
   constructor(private manufacturerService: ManufacturerService,
               private route: ActivatedRoute,
-              private location: Location
+              private location: Location,
+              public userService: UserService
 
   ) { }
 

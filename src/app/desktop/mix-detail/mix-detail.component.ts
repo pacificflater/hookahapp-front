@@ -3,6 +3,7 @@ import {MixService} from "../../_services/mix.service";
 import {ActivatedRoute} from "@angular/router";
 import {Mix} from "../../_models/mix";
 import {Location} from "@angular/common";
+import {UserService} from "../../_services/user.service";
 
 @Component({
   selector: 'app-mix-detail',
@@ -15,6 +16,7 @@ export class MixDetailDesctopComponent implements OnInit {
     private mixService: MixService,
     private route: ActivatedRoute,
     private location: Location,
+    public userService: UserService
   ) { }
 
   mix: Mix;

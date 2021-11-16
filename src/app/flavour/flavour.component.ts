@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import {MatSort} from '@angular/material/sort';
 import {MixesItem} from '../desktop/mix/mix-datasource';
+import {UserService} from "../_services/user.service";
 
 
 
@@ -25,6 +26,7 @@ export class FlavourComponent implements OnInit {
   constructor(private flavourService: FlavourService,
               private messagesService: MessagesService,
               public dialog: MatDialog,
+              public userService: UserService
   ) { }
 
   flavours: Flavour[];

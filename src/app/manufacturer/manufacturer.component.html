@@ -9,7 +9,8 @@
           <mat-label>Filter</mat-label>
           <input matInput (keyup)="applyFilter($event)" #input>
         </mat-form-field>
-        <button mat-raised-button class="float-right custom" color="primary" (click)="openDialog()">Добавить</button>
+        <span *ngIf="userService.isLoggedIn();else elseBlock"><button mat-raised-button class="float-right custom" color="primary" (click)="openDialog()">Добавить</button></span>
+        <ng-template #elseBlock><button mat-raised-button disabled class="float-right custom" (click)="openDialog()">Добавить</button></ng-template>
     </div>
   </div>
 

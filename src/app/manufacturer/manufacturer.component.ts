@@ -7,6 +7,7 @@ import { MatDialog} from '@angular/material/dialog';
 import {MatTable, MatTableDataSource} from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import {MixesItem} from '../desktop/mix/mix-datasource';
+import {UserService} from "../_services/user.service";
 
 
 @Component({
@@ -23,7 +24,8 @@ export class ManufacturerComponent implements AfterViewInit, OnInit {
 
   constructor(private manufacturerService: ManufacturerService,
               public messageService: MessagesService,
-              public dialog: MatDialog
+              public dialog: MatDialog,
+              public userService: UserService
 ) {}
 
   manufacturers: Manufacturer[];

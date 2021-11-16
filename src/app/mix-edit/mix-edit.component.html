@@ -14,12 +14,12 @@
         <mat-card-content>
           <form>
             <h4>Микс</h4>
-            <mat-form-field>
+            <mat-form-field appearance="outline">
               <input matInput [(ngModel)]="mix.mix_name" [name]="mix.mix_name">
             </mat-form-field>
             <br>
             <h4>Чаша</h4>
-                <mat-form-field>
+                <mat-form-field appearance="outline">
               <mat-label>
                 <div *ngIf="mix.bowl !== null; else elseBlock2">{{mix.bowl.name}}</div>
                 <ng-template #elseBlock2>Выберите чашу..</ng-template>
@@ -30,7 +30,7 @@
             </mat-form-field>
                 <br>
             <h4>Оценка</h4>
-            <mat-form-field>
+            <mat-form-field appearance="outline">
               <mat-label>{{mix.rating}}/5</mat-label>
               <mat-select [(ngModel)]="mix.rating" name="rating">
                 <mat-option *ngFor="let rating of ratings" [value]="rating">{{rating}}/5</mat-option>
@@ -38,14 +38,14 @@
             </mat-form-field>
                 <br>
             <h4>Крепость</h4>
-            <mat-form-field class="number">
+            <mat-form-field class="number" appearance="outline">
               <mat-label>{{mix.strength}}/10</mat-label>
               <mat-select [(ngModel)]="mix.strength" name="strength">
                 <mat-option *ngFor="let strength of strengths" [value]="strength">{{strength}}/10</mat-option>
               </mat-select>
             </mat-form-field>
         <br>
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="outline">
               <mat-label>Описание</mat-label>
               <textarea matInput placeholder="name" [(ngModel)]="mix.description" name="description"></textarea>
             </mat-form-field>

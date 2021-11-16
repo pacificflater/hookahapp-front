@@ -25,3 +25,11 @@ google-chart {
   top: 5px;
   right: 5px;
 }
+
+.mixes {
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+}

@@ -30,17 +30,17 @@ h2 {
 
 form {
   /*justify-content: center;*/
-  width: 60%;
+  /*width: 60%;*/
 }
 
 h4 {
+  margin-top: 0;
   margin-bottom: 0;
 }
 
-/*.add-card {*/
-/*  max-width: 900px;*/
-/*  margin: 4em auto;*/
-/*}*/
+.add-card {
+  text-align: center;
+}
 
 mat-icon {
     height:15px !important;

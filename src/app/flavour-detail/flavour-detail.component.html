@@ -1,4 +1,5 @@
-<mat-card class="flavour-card mat-elevation-z8">
+<div class="container">
+  <mat-card class="flavour-card mat-elevation-z8">
   <mat-card-header class="mat-card-header">
     <mat-card-title>{{flavour.flavour_name}}</mat-card-title>
   </mat-card-header>
@@ -19,12 +20,30 @@
           <ng-template #elseBlock2><div>Описание отсутствует</div></ng-template>
         </div>
       </mat-grid-tile>
-    </mat-grid-list>
+<!--      <mat-grid-tile colspan="2" rowspan="4">-->
+<!--        -->
+<!--      </mat-grid-tile>-->
 
+    </mat-grid-list>
+    <mat-accordion multi>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+        <mat-panel-title>
+          Миксы с {{flavour.flavour_name}}
+        </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul *ngFor="let mix of mixes">
+          <li><a class="mixes" routerLink="/mix/detail/{{mix.id}}">{{mix.mix_name}}</a></li>
+        </ul>
+      </mat-expansion-panel>
+    </mat-accordion>
   </mat-card-content>
   <mat-card-actions>
     <button mat-raised-button (click)="goBack()">Назад</button>
-    <button mat-raised-button color="primary" routerLink="/flavour/edit/{{flavour.id}}">Изменить</button>
+    <span *ngIf="userService.isLoggedIn();else elseBlock3"><button mat-raised-button color="primary" routerLink="/flavour/edit/{{flavour.id}}">Изменить</button></span>
+    <ng-template #elseBlock3><button mat-raised-button disabled routerLink="/flavour/edit/{{flavour.id}}">Изменить</button></ng-template>
   </mat-card-actions>
 
 </mat-card>
+</div>
+
