@@ -18,12 +18,14 @@
     <div class="col-lg">
       <div class="manufacturer-table mat-elevation-z8">
         <table mat-table [dataSource] = "dataSource" matSort>
+
           <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Производитель </th>
             <td mat-cell *matCellDef="let manufacturer">
               <a routerLink="/manufacturer/detail/{{manufacturer.id}}">{{manufacturer.name}}</a>
             </td>
           </ng-container>
+
           <ng-container matColumnDef="type.type">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Табак/Чай </th>
             <td mat-cell *matCellDef="let manufacturer">
@@ -31,15 +33,19 @@
               <ng-template #elseBlock>{{manufacturer.type.type}}</ng-template>
             </td>
           </ng-container>
+
           <ng-container matColumnDef="buttons">
             <th mat-header-cell *matHeaderCellDef></th>
             <td mat-cell *matCellDef="let manufacturer">
-              <div class="btn-group float-right">
-                <button class="btn" routerLink="/manufacturer/edit/{{manufacturer.id}}"><mat-icon aria-hidden="false">edit</mat-icon></button>
-                <button class="btn" (click)="deleteManufacturer(manufacturer)"><mat-icon aria-hidden="false">delete_forever</mat-icon></button>
-              </div>
+              <span *ngIf="userService.isLoggedIn();">
+                <div class="btn-group float-right">
+                  <button class="btn" routerLink="/manufacturer/edit/{{manufacturer.id}}"><mat-icon aria-hidden="false">edit</mat-icon></button>
+                  <button class="btn" (click)="deleteManufacturer(manufacturer)"><mat-icon aria-hidden="false">delete_forever</mat-icon></button>
+                </div>
+              </span>
             </td>
           </ng-container>
+
           <tr mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true"></tr>
           <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
           <tr mat-row *matNoDataRow>

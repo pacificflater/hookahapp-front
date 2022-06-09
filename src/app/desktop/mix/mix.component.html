@@ -49,10 +49,12 @@
           <ng-container matColumnDef="buttons">
             <th mat-header-cell *matHeaderCellDef></th>
             <td mat-cell *matCellDef="let mix">
-              <div class="btn-group float-right">
-                <button class="btn" routerLink="/mix/edit/{{mix.id}}"><mat-icon aria-hidden="false">edit</mat-icon></button>
-                <button class="btn" (click)="deleteMix(mix)"><mat-icon aria-hidden="false">delete_forever</mat-icon></button>
-              </div>
+              <span *ngIf="userService.isLoggedIn();">
+                <div class="btn-group float-right">
+                  <button class="btn" routerLink="/mix/edit/{{mix.id}}"><mat-icon aria-hidden="false">edit</mat-icon></button>
+                  <button class="btn" (click)="deleteMix(mix)"><mat-icon aria-hidden="false">delete_forever</mat-icon></button>
+                </div>
+              </span>
             </td>
           </ng-container>
 
