@@ -25,9 +25,15 @@
           <ng-template #elseBlock2><div>Описание отсутствует</div></ng-template>
         </div>
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button (click)="goBack()">Назад</button>
-    <button mat-raised-button color="primary" routerLink="/mix/edit/{{mix.id}}">Изменить</button>
-  </mat-card-actions>
+      <mat-card-actions>
+        <span *ngIf="userService.isLoggedIn();else elseBlock5">
+          <button mat-raised-button (click)="goBack()">Назад</button>
+          <button mat-raised-button color="primary" routerLink="/mix/edit/{{mix.id}}">Изменить</button>
+        </span>
+        <ng-template #elseBlock5>
+          <button mat-raised-button (click)="goBack()">Назад</button>
+          <button mat-raised-button disabled routerLink="/mix/edit/{{mix.id}}">Изменить</button>
+        </ng-template>
+      </mat-card-actions>
     </mat-card>
 </div>
